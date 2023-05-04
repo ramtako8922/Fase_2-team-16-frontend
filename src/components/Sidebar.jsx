@@ -18,7 +18,7 @@ const Sidebar = () => {
 	return (
 		<>
 			<div
-				className={`xl:h-[100vh] overflow-y-scroll fixed xl:static  lg:w-[30%] xl:w-auto h-full top-0 bg-secondary-100 p-4 flex flex-col justify-between z-50 ${
+				className={` overflow-y-hidden fixed lg:static  xl:w-auto min-h-screen top-0 bg-secondary-100 p-4 flex flex-col justify-between z-50 ${
 					showMenu ? 'left-0' : '-left-full'
 				} transition-all`}>
 				<div>
@@ -28,7 +28,7 @@ const Sidebar = () => {
 					<ul>
 						<li>
 							<Link
-								href='/'
+								href='/dashboard/products'
 								className='flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-secondary-900 transition-colors'>
 								<RiBarChart2Line className='text-primary' />
 								Products
@@ -92,11 +92,11 @@ const Sidebar = () => {
 					</ul>
 				</div>
 				<nav>
-					<Link
+					{/* <Link
 						href='/'
 						className='flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-secondary-900 transition-colors'>
 						<RiLogoutCircleRLine className='text-primary' /> Log out
-					</Link>
+					</Link> */}
 				</nav>
 			</div>
 			<button

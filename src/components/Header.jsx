@@ -1,5 +1,6 @@
 import React from 'react';
 import Avatar from 'react-avatar';
+import { useRouter } from 'next/router';
 import {
 	RiNotification3Line,
 	RiArrowDownSLine,
@@ -12,8 +13,14 @@ import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu';
 import '@szhsin/react-menu/dist/index.css';
 import '@szhsin/react-menu/dist/transitions/slide.css';
 import Link from 'next/link';
+import { removeToken } from '@/services/accessToken/session';
 
 const Header = () => {
+	const router = useRouter();
+	const handeLogout = () => {
+		removeToken();
+		router.push('/auth/login');
+	};
 	return (
 		<header className='h-[7vh] md:h-[10vh] w-full border-b border-secondary-100 p-8 flex items-center justify-end'>
 			<nav className='flex items-center gap-2'>
@@ -137,11 +144,11 @@ const Header = () => {
 						</Link>
 					</MenuItem>
 					<MenuItem className='p-0 hover:bg-transparent'>
-						<Link
-							href='/cerrar-sesion'
+						<button
+							onClick={handeLogout}
 							className='rounded-lg transition-colors text-gray-300 hover:bg-secondary-900 flex items-center gap-x-4 py-2 px-6 flex-1'>
 							<RiLogoutCircleRLine /> Log out
-						</Link>
+						</button>
 					</MenuItem>
 				</Menu>
 			</nav>

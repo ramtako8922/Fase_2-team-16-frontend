@@ -1,13 +1,17 @@
 import '@/styles/globals.css';
-
-import { ApiProvider } from '@reduxjs/toolkit/dist/query/react';
 import { Provider } from 'react-redux';
 import { store } from '@/store/store';
-
+import { SkeletonTheme } from 'react-loading-skeleton';
 export default function App({ Component, pageProps }) {
 	return (
 		<Provider store={store}>
-			<Component {...pageProps} />
+			<SkeletonTheme
+				baseColor='#243140'
+				highlightColor='#242032'
+				borderRadius='0.1rem'
+				duration={1}>
+				<Component {...pageProps} />
+			</SkeletonTheme>
 		</Provider>
 	);
 }

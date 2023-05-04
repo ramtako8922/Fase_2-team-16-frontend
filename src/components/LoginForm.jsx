@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
-import { getLogin } from '@/store/slices/auth';
+import { getLogin, getCredentials } from '@/store/slices/auth';
 import { useRouter } from 'next/router';
-import { setToken } from '@/store/slices/auth';
 import React from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from 'react';
 import { useLoginUserMutation } from '@/store/slices/apis';
 import LoaderLogin from './LoaderLogin';
+import { setToken, setExpiration } from '@/services/accessToken/session';
+
 // Icons
 import {
 	RiMailLine,
@@ -31,7 +32,7 @@ const LoginForm = () => {
 	const [showPassword, setShowPassword] = useState(false);
 
 	const [
-		loginuser,
+		loginUser,
 		{
 			data: loginData,
 			isLoading: isLoadingLogin,
@@ -40,18 +41,17 @@ const LoginForm = () => {
 			isSuccess: isLoginsuccess,
 		},
 	] = useLoginUserMutation();
-
 	const handleChange = (e) => {
 		setFormValue({ ...formValue, [e.target.name]: e.target.value });
 	};
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (password && email) {
-			await loginuser({ email, password });
+			await loginUser({ email, password });
 		} else {
 			toast.error('🙁😨 please refill fields', {
 				position: 'top-right',
-				autoClose: 800,
+				autoClose: 1200,
 				hideProgressBar: false,
 				closeOnClick: true,
 				pauseOnHover: true,
@@ -74,9 +74,21 @@ const LoginForm = () => {
 				progress: undefined,
 				theme: 'light',
 			});
+			dispatch(getLogin({ email, password }));
+			const { access_token, expires_in } = loginData;
+			const isLoggedIn = true;
+			dispatch(
+				getCredentials({
+					access_token,
+					expires_in,
+					isLoggedIn,
+				})
+			);
+			setToken(access_token);
+			setExpiration(expires_in);
 			router.push('/dashboard/products');
 		} else {
-			if (loginError) {
+			if (loginError && loginError.data) {
 				toast.error(`🙁😨 ${loginError.data.error}`, {
 					position: 'top-right',
 					autoClose: 1300,
@@ -89,7 +101,15 @@ const LoginForm = () => {
 				});
 			}
 		}
-	}, [isLoginsuccess, router, loginError]);
+	}, [
+		isLoginsuccess,
+		router,
+		loginError,
+		loginData,
+		dispatch,
+		email,
+		password,
+	]);
 
 	return (
 		<>
@@ -108,7 +128,7 @@ const LoginForm = () => {
 								name='email'
 								type='email'
 								className='py-3 pl-8 pr-4 bg-secondary-900 w-full outline-none rounded-lg'
-								placeholder='Username or email'
+								placeholder='example@example.com'
 							/>
 						</div>
 						<div className='relative mb-8'>
