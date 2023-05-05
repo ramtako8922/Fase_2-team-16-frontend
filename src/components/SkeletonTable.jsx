@@ -16,17 +16,17 @@ const menuTable = [
 const SkeletonTable = () => {
 	const arr = new Array(15).fill('');
 	return (
-		<div className='overflow-x-auto max-w-[1300px]'>
+		<div className='overflow-x-hidden max-w-[1300px]'>
 			<div className=' min-w-full '>
 				<table className='min-w-full text-left text-sm font-light h-[500px]'>
 					<thead className='border-b font-medium dark:border-neutral-500'>
-						<tr className='translate-x-2'>
+						<tr className=''>
 							{menuTable.map((item, i) => {
 								return (
 									<th
 										key={i}
 										scope='col'
-										className='text-left'>
+										className='bg-sky-900'>
 										{item}
 									</th>
 								);
@@ -37,7 +37,7 @@ const SkeletonTable = () => {
 						{arr.map((item, index) => {
 							return (
 								<tr
-									className='border-b dark:border-neutral-500 w-auto'
+									className={`cursor-pointer border-b dark:border-neutral-500 w-auto hover:bg-[#333] `}
 									key={index}>
 									<td className='whitespace-nowrap h-4 '>
 										<Skeleton />
