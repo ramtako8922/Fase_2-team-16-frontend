@@ -17,9 +17,7 @@ const dashboard = () => {
 				/>
 			</Head>
 
-			<div className='w-full'>
-				<TableData />
-			</div>
+			<div className='w-full'></div>
 		</DashboardLayout>
 	);
 };

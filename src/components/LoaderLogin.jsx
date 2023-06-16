@@ -8,7 +8,7 @@ const LoaderLogin = () => {
 					size={300}
 					lineWeight={5}
 					speed={1}
-					color='white'
+					color='black'
 				/>
 			</div>
 		</>

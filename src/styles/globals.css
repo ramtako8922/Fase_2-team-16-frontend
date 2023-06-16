@@ -3,17 +3,8 @@
 @tailwind utilities;
 
 body {
-	color: #fff;
-	background: #111;
+	color: black;
 	box-sizing: border-box;
-}
-.login {
-	background-image: url(/Dashboard-Login.jpg);
-	background-size: cover;
-
-	background-repeat: no-repeat;
-	height: 100%;
-	width: 100vw;
 }
 
 /* ::-webkit-scrollbar {

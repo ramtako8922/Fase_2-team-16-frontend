@@ -22,7 +22,7 @@ const Sidebar = () => {
 					showMenu ? 'left-0' : '-left-full'
 				} transition-all`}>
 				<div>
-					<h1 className='text-center text-2xl font-bold text-white mb-10'>
+					<h1 className='text-center text-2xl font-bold text-black mb-10'>
 						Admin<span className='text-primary text-5xl'>.</span>
 					</h1>
 					<ul>
@@ -37,7 +37,7 @@ const Sidebar = () => {
 						<li>
 							<button
 								onClick={() => setShowSubmenu(!showSubmenu)}
-								className='w-full flex items-center justify-between py-2 px-4 rounded-lg hover:bg-secondary-900 transition-colors'>
+								className='w-full flex items-center justify-between py-2 px-4 rounded-lg hover:bg-slate-400 transition-colors'>
 								<span className='flex items-center gap-4'>
 									<SiPcgamingwiki className='text-primary' />
 									Categories
@@ -54,21 +54,21 @@ const Sidebar = () => {
 								} overflow-y-hidden transition-all`}>
 								<li>
 									<Link
-										href='/'
+										href='/dashboard/home'
 										className='py-2 px-4 border-l border-gray-500 ml-6 block relative before:w-3 before:h-3 before:absolute before:bg-primary before:rounded-full before:-left-[6.5px] before:top-1/2 before:-translate-y-1/2 before:border-4 before:border-secondary-100 hover:text-white transition-colors'>
 										Gaming
 									</Link>
 								</li>
 								<li>
 									<Link
-										href='/'
+										href='/dashboard/home'
 										className='py-2 px-4 border-l border-gray-500 ml-6 block relative before:w-3 before:h-3 before:absolute before:bg-gray-500 before:rounded-full before:-left-[6.5px] before:top-1/2 before:-translate-y-1/2 before:border-4 before:border-secondary-100 hover:text-white transition-colors'>
 										Office
 									</Link>
 								</li>
 								<li>
 									<Link
-										href='/'
+										href='/dashboard/home'
 										className='py-2 px-4 border-l border-gray-500 ml-6 block relative before:w-3 before:h-3 before:absolute before:bg-gray-500 before:rounded-full before:-left-[6.5px] before:top-1/2 before:-translate-y-1/2 before:border-4 before:border-secondary-100 hover:text-white transition-colors'>
 										Photography
 									</Link>
@@ -77,14 +77,14 @@ const Sidebar = () => {
 						</li>
 						<li>
 							<Link
-								href='/tickets'
+								href='/dashboard/home'
 								className='flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-secondary-900 transition-colors'>
 								<RiCustomerService2Line className='text-primary' /> Tickets
 							</Link>
 						</li>
 						<li>
 							<Link
-								href='/'
+								href='/dashboard/home'
 								className='flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-secondary-900 transition-colors'>
 								<RiCalendarTodoLine className='text-primary' /> Calendar
 							</Link>

@@ -10,7 +10,8 @@ import { useEffect } from 'react';
 import { useLoginUserMutation } from '@/store/slices/apis';
 import LoaderLogin from './LoaderLogin';
 import { setToken, setExpiration } from '@/services/accessToken/session';
-
+import Image from 'next/image';
+import Logo from '../../public/logo.png';
 // Icons
 import {
 	RiMailLine,
@@ -88,7 +89,7 @@ const LoginForm = () => {
 			setToken(token);
 			/* setExpiration(expires_in); */
 			/* router.push('/dashboard/products'); */
-			router.push('/dashboard/home')
+			router.push('/dashboard/home');
 		} else {
 			if (loginError && loginError.data) {
 				toast.error(`🙁😨 ${loginError.data.error}`, {
@@ -115,42 +116,42 @@ const LoginForm = () => {
 
 	return (
 		<>
-			<div className='min-h-screen flex items-center justify-center p-4 flex-col '>
+			<div className='min-h-screen flex items-center justify-center p-4 flex-col text-white'>
 				<div className='bg-secondary-100 p-8 rounded-xl shadow-2xl w-auto lg:w-[450px]'>
-					<h1 className='text-3xl text-center uppercase font-bold tracking-[5px] text-white mb-8'>
+					<h1 className='text-3xl text-center uppercase font-bold tracking-[5px] text-black mb-8'>
 						Sing <span className='text-primary'>Up</span>
 					</h1>
 					<form
 						className='mb-8'
 						onSubmit={handleSubmit}>
-						<div className='relative mb-4'>
-							<RiMailLine className='absolute top-1/2 -translate-y-1/2 left-2 text-primary' />
+						<div className='relative mb-4 '>
+							<RiMailLine className='absolute top-1/2 -translate-y-1/2 left-2 text-white' />
 							<input
 								onChange={handleChange}
 								name='email'
 								type='email'
-								className='py-3 pl-8 pr-4 bg-secondary-900 w-full outline-none rounded-lg'
+								className='py-3 pl-8 pr-4 bg-input_auth w-full focus:bg-input_auth outline-none rounded-lg'
 								placeholder='example@example.com'
 							/>
 						</div>
 						<div className='relative mb-8'>
-							<RiLockLine className='absolute top-1/2 -translate-y-1/2 left-2 text-primary' />
+							<RiLockLine className='absolute top-1/2 -translate-y-1/2 left-2 text-white' />
 							<input
 								onChange={handleChange}
 								name='password'
 								type={showPassword ? 'text' : 'password'}
-								className='py-3 px-8 bg-secondary-900 w-full outline-none rounded-lg'
+								className='py-3 px-8 bg-input_auth w-full outline-none rounded-lg'
 								placeholder='Password'
 							/>
 							{showPassword ? (
 								<RiEyeOffLine
 									onClick={() => setShowPassword(!showPassword)}
-									className='absolute top-1/2 -translate-y-1/2 right-2 hover:cursor-pointer text-primary'
+									className='absolute top-1/2 -translate-y-1/2 right-2 hover:cursor-pointer text-white'
 								/>
 							) : (
 								<RiEyeLine
 									onClick={() => setShowPassword(!showPassword)}
-									className='absolute top-1/2 -translate-y-1/2 right-2 hover:cursor-pointer text-primary'
+									className='absolute top-1/2 -translate-y-1/2 right-2 hover:cursor-pointer text-white'
 								/>
 							)}
 						</div>
@@ -165,19 +166,24 @@ const LoginForm = () => {
 					<div className='flex flex-col items-center gap-4'>
 						<Link
 							href='/auth/forgot-password'
-							className='hover:text-primary transition-colors'>
+							className='hover:text-primary text-black transition-colors '>
 							Forget your password?
 						</Link>
 						<Link
 							href='/auth/register'
-							className='hover:text-primary transition-colors'>
+							className='hover:text-primary text-black transition-colors '>
 							Create account
 						</Link>
 					</div>
 				</div>
+				<Image
+					src={Logo}
+					alt='Logo ZurmC'
+					className='mt-8 translate-y-20'
+				/>
 
 				<ToastContainer />
-				<div className='mt-10 flex justify-center items-center'>
+				<div className='-translate-y-24 flex justify-center items-center'>
 					{isLoadingLogin ? <LoaderLogin /> : null}
 				</div>
 			</div>
