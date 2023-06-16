@@ -3,7 +3,7 @@ import { getToken, setToken } from '@/services/accessToken/session';
 export const apiSlice = createApi({
 	reducerPath: 'apiInventario',
 	baseQuery: fetchBaseQuery({
-		baseUrl: 'https://api-inventario.onrender.com',
+		baseUrl: 'http://ec2-34-201-40-40.compute-1.amazonaws.com/api',
 	}),
 	endpoints: (builder) => ({
 		loginUser: builder.mutation({
@@ -60,7 +60,7 @@ export const apiSlice = createApi({
 		getProducts: builder.query({
 			query: () => {
 				return {
-					url: '/api/products',
+					url: '/products',
 					headers: {
 						Authorization: `Bearer ${getToken()}`,
 					},

@@ -75,18 +75,20 @@ const LoginForm = () => {
 				theme: 'light',
 			});
 			dispatch(getLogin({ email, password }));
-			const { access_token, expires_in } = loginData;
+			const { token } = loginData.data;
+			console.log(loginData);
 			const isLoggedIn = true;
 			dispatch(
 				getCredentials({
-					access_token,
-					expires_in,
+					token,
+					/* expires_in, */
 					isLoggedIn,
 				})
 			);
-			setToken(access_token);
-			setExpiration(expires_in);
-			router.push('/dashboard/products');
+			setToken(token);
+			/* setExpiration(expires_in); */
+			/* router.push('/dashboard/products'); */
+			router.push('/dashboard/home')
 		} else {
 			if (loginError && loginError.data) {
 				toast.error(`🙁😨 ${loginError.data.error}`, {
