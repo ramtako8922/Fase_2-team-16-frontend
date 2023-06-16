@@ -19,4 +19,8 @@ const nextConfig = {
 	},
 };
 
-module.exports = nextConfig;
+module.exports = {
+	production: {
+		https: false,
+	},
+};
