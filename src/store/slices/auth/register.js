@@ -1,4 +1,4 @@
-import { CreateSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 export const registerSlice = createSlice({
 	name: 'register',
@@ -24,11 +24,11 @@ export const registerSlice = createSlice({
 		},
 		
 		
-		l
+		
 	},
 });
 
-export const { getRegister,startRegister } =
+export const {getRegister } =
 	registerSlice.actions;
 
 export default registerSlice.reducer;

@@ -3,9 +3,22 @@ import { getToken, setToken } from '@/services/accessToken/session';
 export const apiSlice = createApi({
 	reducerPath: 'apiInventario',
 	baseQuery: fetchBaseQuery({
-		baseUrl: 'http://ec2-44-212-45-243.compute-1.amazonaws.com/api',
+		baseUrl: 'http://localhost:4000/api',
 	}),
 	endpoints: (builder) => ({
+
+		registerUser: builder.mutation({
+			query: (dataRegister) => {
+				return {
+					url: '/auth/register',
+					method: 'POST',
+					body: dataRegister,
+				};
+			},
+
+			
+		}),
+		
 		loginUser: builder.mutation({
 			query: (dataLogin) => {
 				return {
@@ -14,6 +27,8 @@ export const apiSlice = createApi({
 					body: dataLogin,
 				};
 			},
+
+			
 			// transformResponse: (response) => {
 			// 	const { access_token, expires_in } = response;
 			// 	localStorage.setItem('access_token', JSON.stringify(access_token));
@@ -75,6 +90,7 @@ export const apiSlice = createApi({
 });
 
 export const {
+	useRegisterUserMutation,
 	useLoginUserMutation,
 	useGetUserQuery,
 	useGetRefreshTokenMutation,
