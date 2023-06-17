@@ -2,6 +2,7 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import Logo from '../../public/logo.png';
 import Image from 'next/image';
+import LoaderLogin from './LoaderLogin';
 Link;
 // Icons
 import {
@@ -15,7 +16,7 @@ const Register = () => {
 	const [showPassword, setShowPassword] = useState(false);
 	return (
 		<div className='min-h-screen flex items-center justify-center p-4 flex-col text-white'>
-			<div className='bg-secondary-100 p-8 rounded-xl shadow-2xl w-auto lg:w-[450px]'>
+			<div className='bg-secondary-100 p-8 rounded-xl shadow-2xl w-auto lg:w-[400px]'>
 				<h1
 					className='text-3xl text-center uppercase font-bold tracking-[5px] text-black fon
 				mb-8'>
@@ -104,8 +105,11 @@ const Register = () => {
 			<Image
 				src={Logo}
 				alt='Logo ZurmC'
-				className='mt-8 '
+				className='mt-10 lg:mt-4 lg:translate-y-10 w-auto h-20 md:h-28 lg:w-auto lg:h-24'
 			/>
+			<div className='-translate-y-28 md:-translate-y-36 lg:-translate-y-24 flex justify-center items-center'>
+				{false ? <LoaderLogin /> : null}
+			</div>
 		</div>
 	);
 };

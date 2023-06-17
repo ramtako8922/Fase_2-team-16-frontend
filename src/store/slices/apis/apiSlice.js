@@ -3,7 +3,7 @@ import { getToken, setToken } from '@/services/accessToken/session';
 export const apiSlice = createApi({
 	reducerPath: 'apiInventario',
 	baseQuery: fetchBaseQuery({
-		baseUrl: 'http://ec2-44-212-45-243.compute-1.amazonaws.com/api',
+		baseUrl: 'https://api-trycatch-test.fly.dev',
 	}),
 	endpoints: (builder) => ({
 		loginUser: builder.mutation({

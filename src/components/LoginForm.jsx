@@ -76,7 +76,7 @@ const LoginForm = () => {
 				theme: 'light',
 			});
 			dispatch(getLogin({ email, password }));
-			const { token } = loginData.data;
+			const { token } = loginData.accessToken;
 			console.log(loginData);
 			const isLoggedIn = true;
 			dispatch(
@@ -179,11 +179,11 @@ const LoginForm = () => {
 				<Image
 					src={Logo}
 					alt='Logo ZurmC'
-					className='mt-8 translate-y-20'
+					className='mt-12  lg:mt-4 lg:translate-y-20 w-auto h-20 md:h-28 lg:w-auto lg:h-auto'
 				/>
 
 				<ToastContainer />
-				<div className='-translate-y-24 flex justify-center items-center'>
+				<div className='-translate-y-24 md:-translate-y-32 flex justify-center items-center'>
 					{isLoadingLogin ? <LoaderLogin /> : null}
 				</div>
 			</div>
