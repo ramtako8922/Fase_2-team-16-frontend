@@ -2,10 +2,8 @@ import React from 'react';
 import Sidebar from '@/components/Sidebar';
 import Header from '@/components/Header';
 import Head from 'next/head';
-import { useGetUserQuery } from '@/store/slices/apis';
+
 const DashboardLayout = ({ children }) => {
-	const { data: userData, isLoading } = useGetUserQuery();
-	console.log(userData);
 	return (
 		<>
 			<Head>

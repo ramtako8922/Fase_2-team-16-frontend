@@ -4,37 +4,28 @@ export const authSlice = createSlice({
 	name: 'auth',
 	initialState: {
 		isLoggedIn: false,
-		access_token: '',
-		expires_in: '',
-		user: '',
 		id: '',
+		accessToken: '',
 		name: '',
-		isLoading: false,
+		lastname: '',
+		username: '',
 		email: '',
-		password: '',
+		roles: '',
 	},
 	reducers: {
-		getLogin: (state, action) => {
-			const { email, password } = action.payload;
-			state.email = email;
-			state.password = password;
-		},
-		startLoading: (state) => {
-			state.isLoading = true;
-		},
-		getCredentials: (state, action) => {
-			state.isLoggedIn = true;
-			state.access_token = action.payload.access_token;
-			state.expires_in = action.payload.expires_in;
-		},
 		getUser: (state, action) => {
-			state.email = action.payload.email;
+			state.isLoggedIn = true;
 			state.id = action.payload.id;
+			state.accessToken = action.payload.accessToken;
 			state.name = action.payload.name;
+			state.username = action.payload.username;
+			state.lastname = action.payload.lastname;
+			state.roles = action.payload.roles;
+			state.email = action.payload.email;
 		},
 		logOut: (state) => {
 			state.isLoggedIn = false;
-			state.access_token = null;
+			state.accessToken = null;
 			state.email = null;
 			state.id = null;
 			state.name = null;
@@ -42,7 +33,6 @@ export const authSlice = createSlice({
 	},
 });
 
-export const { getLogin, startLoading, getCredentials, getUser, logOut } =
-	authSlice.actions;
+export const { getCredentials, getUser, logOut } = authSlice.actions;
 
 export default authSlice.reducer;

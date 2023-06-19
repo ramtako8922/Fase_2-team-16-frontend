@@ -1,8 +1,7 @@
 import { NextResponse } from 'next/server';
-import { setToken } from './services/accessToken/session';
 
 export async function middleware(request) {
-	const jwt = request.cookies.get('access_token');
+	const jwt = request.cookies.get('ZurmSesionT');
 
 	if (jwt === undefined) {
 		return NextResponse.redirect(new URL('/auth/login', request.url));
@@ -11,6 +10,3 @@ export async function middleware(request) {
 export const config = {
 	matcher: ['/dashboard/:path*', '/'],
 };
-
-//TODO: mejorar el middleware para que no se haga la peticion a la api cada vez que se recarga la pagina
-// See "Matching Paths" below to learn more

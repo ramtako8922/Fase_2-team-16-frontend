@@ -3,7 +3,7 @@ import { getToken, setToken } from '@/services/accessToken/session';
 export const apiSlice = createApi({
 	reducerPath: 'apiInventario',
 	baseQuery: fetchBaseQuery({
-		baseUrl: 'http://ec2-44-212-45-243.compute-1.amazonaws.com/api',
+		baseUrl: 'https://api-trycatch-test.fly.dev',
 	}),
 	endpoints: (builder) => ({
 		loginUser: builder.mutation({
@@ -14,69 +14,61 @@ export const apiSlice = createApi({
 					body: dataLogin,
 				};
 			},
-			// transformResponse: (response) => {
-			// 	const { access_token, expires_in } = response;
-			// 	localStorage.setItem('access_token', JSON.stringify(access_token));
-			// 	localStorage.setItem('expires_in', JSON.stringify(expires_in));
-			// 	console.log(access_token, expires_in);
-			// 	return response;
-			// },
+			transformResponse: (response) => {
+				const { accessToken, id } = response;
+				setToken(accessToken);
+				console.log(accessToken, id);
+				return response;
+			},
+		}),
+		registerUser: builder.mutation({
+			query: (dataRegister) => {
+				return {
+					url: '/auth/register',
+					method: 'POST',
+					body: dataRegister,
+				};
+			},
 		}),
 		getUser: builder.query({
 			query: () => {
 				return {
-					url: '/auth/me',
+					url: '/api/me',
 					headers: {
-						Authorization: `Bearer ${getToken()}`,
+						Authorization: `${getToken()}`,
 					},
 				};
 			},
-			transformResponse: (response) => {
-				const { email, id, name } = response;
-				localStorage.setItem('email', JSON.stringify(email));
-				localStorage.setItem('id', JSON.stringify(id));
-				localStorage.setItem('name', JSON.stringify(name));
-				return response;
-			},
 		}),
-		getRefreshToken: builder.mutation({
-			query: () => {
+		resetPassword: builder.mutation({
+			query: (email) => {
 				return {
-					url: '/auth/refresh',
+					url: '/auth/forgot-password',
 					method: 'POST',
-					headers: {
-						Authorization: `Bearer ${getToken()}`,
-					},
+					body: email,
 				};
 			},
-			transformResponse: (response) => {
-				if (response.status === 200) {
-					const { access_token, expires_in } = response;
-					setToken(access_token, expires_in);
-				}
-				return response;
-			},
 		}),
-		getProducts: builder.query({
-			query: () => {
-				return {
-					url: '/products',
-					headers: {
-						Authorization: `Bearer ${getToken()}`,
-					},
-				};
-			},
-			transformResponse: (response) => {
-				const { data } = response;
-				return data;
-			},
-		}),
+		// 	getProducts: builder.query({
+		// 		query: () => {
+		// 			return {
+		// 				url: '/products',
+		// 				headers: {
+		// 					Authorization: `Bearer ${getToken()}`,
+		// 				},
+		// 			};
+		// 		},
+		// 		transformResponse: (response) => {
+		// 			const { data } = response;
+		// 			return data;
+		// 		},
+		// 	}),
 	}),
 });
 
 export const {
 	useLoginUserMutation,
+	useRegisterUserMutation,
 	useGetUserQuery,
-	useGetRefreshTokenMutation,
-	useGetProductsQuery,
+	useResetPasswordMutation,
 } = apiSlice;
