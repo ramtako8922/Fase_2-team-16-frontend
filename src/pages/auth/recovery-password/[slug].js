@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
 import Logo from '../../../../public/logo.png';
 import { useForm } from 'react-hook-form';
@@ -30,7 +29,7 @@ const RecoveryPass = () => {
 				/>
 				<div className=' p-8 rounded-xl shadow-2xl w-auto lg:w-[450px] '>
 					<h1 className='text-3xl text-center uppercase font-bold tracking-[5px] text-black mb-4'>
-						Change<span className='text-primary'> Reset</span>
+						Change<span className='text-primary'> Password</span>
 					</h1>
 					<form
 						className='mb-8 mt-8'
@@ -81,21 +80,6 @@ const RecoveryPass = () => {
 							</button>
 						</div>
 					</form>
-					<div className='flex flex-col items-center gap-4'>
-						<Link
-							href='/auth/register'
-							className='hover:text-primary text-black transition-colors'>
-							Create account
-						</Link>
-						<span className='flex items-center justify-center gap-2 text-black'>
-							You have account?
-							<Link
-								href='/auth/login'
-								className='text-black font-semibold hover:text-primary transition-colors'>
-								Login
-							</Link>
-						</span>
-					</div>
 				</div>
 			</div>
 		</>

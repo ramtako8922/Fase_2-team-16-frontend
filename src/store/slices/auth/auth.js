@@ -23,6 +23,9 @@ export const authSlice = createSlice({
 			state.roles = action.payload.roles;
 			state.email = action.payload.email;
 		},
+		getEmailResetPassword: (state, action) => {
+			state.email = action.payload;
+		},
 		logOut: (state) => {
 			state.isLoggedIn = false;
 			state.accessToken = null;
@@ -33,6 +36,7 @@ export const authSlice = createSlice({
 	},
 });
 
-export const { getCredentials, getUser, logOut } = authSlice.actions;
+export const { getCredentials, getUser, logOut, getEmailResetPassword } =
+	authSlice.actions;
 
 export default authSlice.reducer;

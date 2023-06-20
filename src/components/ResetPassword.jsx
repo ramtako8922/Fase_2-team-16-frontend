@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import Image from 'next/image';
 import { useResetPasswordMutation } from '@/store/slices/apis';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { getEmailResetPassword } from '@/store/slices/auth';
+import { Dispatch } from 'react';
 import LoaderLogin from './LoaderLogin';
 import {
 	RiMailLine,
@@ -13,8 +15,12 @@ import {
 	RiEyeOffLine,
 } from 'react-icons/ri';
 import Logo from '../../public/logo.png';
+import { useRouter } from 'next/router';
+import { useDispatch } from 'react-redux';
 
 const ResetPassword = () => {
+	const dispatch = useDispatch();
+	const [email, setEmail] = useState('');
 	const [
 		resetPassword,
 		{
@@ -22,10 +28,10 @@ const ResetPassword = () => {
 			isLoading: isResetLoading,
 			error: ResetPasswordError,
 			isError: isErrResetPassword,
-			isSuccess: isResetuccess,
+			isSuccess: isResetSuccess,
 		},
 	] = useResetPasswordMutation();
-
+	const router = useRouter();
 	const {
 		register,
 		handleSubmit,
@@ -33,10 +39,16 @@ const ResetPassword = () => {
 	} = useForm();
 	console.log(resetPasswordData);
 
-	const onSubmit = async (e) => {
-		console.log(e);
-		resetPassword(e);
+	const onSubmit = async (email) => {
+		setEmail(email.userBody);
+		resetPassword(email);
 	};
+	useEffect(() => {
+		if (isResetSuccess) {
+			dispatch(getEmailResetPassword(email));
+			router.push('/auth/recovery-password/message');
+		}
+	}, [isResetSuccess, router, dispatch, email]);
 
 	return (
 		<>
@@ -68,44 +80,6 @@ const ResetPassword = () => {
 								placeholder='Email'
 							/>
 						</div>
-						{/* <div className='relative mb-4'>
-						<RiLockLine className='absolute top-1/2 -translate-y-1/2 left-2 text-white' />
-						<input
-							type={showPassword ? 'text' : 'password'}
-							className='py-3 px-8 bg-input_auth w-full outline-none rounded-lg'
-							placeholder='Password'
-						/>
-						{showPassword ? (
-							<RiEyeOffLine
-								onClick={() => setShowPassword(!showPassword)}
-								className='absolute top-1/2 -translate-y-1/2 right-2 hover:cursor-pointer text-white'
-							/>
-						) : (
-							<RiEyeLine
-								onClick={() => setShowPassword(!showPassword)}
-								className='absolute top-1/2 -translate-y-1/2 right-2 hover:cursor-pointer text-white'
-							/>
-						)}
-					</div>
-					<div className='relative mb-8'>
-						<RiLockLine className='absolute top-1/2 -translate-y-1/2 left-2 text-white' />
-						<input
-							type={showPassword ? 'text' : 'password'}
-							className='py-3 px-8 bg-input_auth w-full outline-none rounded-lg'
-							placeholder='Confirm Password'
-						/>
-						{showPassword ? (
-							<RiEyeOffLine
-								onClick={() => setShowPassword(!showPassword)}
-								className='absolute top-1/2 -translate-y-1/2 right-2 hover:cursor-pointer text-white'
-							/>
-						) : (
-							<RiEyeLine
-								onClick={() => setShowPassword(!showPassword)}
-								className='absolute top-1/2 -translate-y-1/2 right-2 hover:cursor-pointer text-white'
-							/>
-						)}
-					</div> */}
 						<div>
 							<button
 								type='submit'
