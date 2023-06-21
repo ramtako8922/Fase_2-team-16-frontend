@@ -13,12 +13,13 @@ import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu';
 import '@szhsin/react-menu/dist/index.css';
 import '@szhsin/react-menu/dist/transitions/slide.css';
 import Link from 'next/link';
-import { removeToken } from '@/services/accessToken/session';
+import { removeToken, removeLogin_in } from '@/services/accessToken/session';
 
 const Header = () => {
 	const router = useRouter();
 	const handeLogout = () => {
 		removeToken();
+		removeLogin_in();
 		router.push('/auth/login');
 	};
 	return (

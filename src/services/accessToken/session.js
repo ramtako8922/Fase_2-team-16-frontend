@@ -1,5 +1,19 @@
 import Cookies from 'js-cookie';
+import { cookies } from 'next/dist/client/components/headers';
+
 const TOKEN_KEY = 'ZurmSesionT';
+const login_in = 'Login_in';
+const value = 'true';
+export const Login_in = async () => {
+	Cookies.set(login_in, value);
+};
+export const getLogin_in = () => {
+	return Cookies.get(login_in);
+};
+export const removeLogin_in = () => {
+	Cookies.remove(login_in);
+};
+
 export const getToken = () => {
 	return Cookies.get(TOKEN_KEY);
 };

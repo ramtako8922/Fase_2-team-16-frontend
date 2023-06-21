@@ -11,6 +11,10 @@ export const authSlice = createSlice({
 		username: '',
 		email: '',
 		roles: '',
+		emailReset: '',
+		emailRegister: '',
+		login_in: false,
+		login_user: '',
 	},
 	reducers: {
 		getUser: (state, action) => {
@@ -22,9 +26,10 @@ export const authSlice = createSlice({
 			state.lastname = action.payload.lastname;
 			state.roles = action.payload.roles;
 			state.email = action.payload.email;
+			state.login_in = true;
 		},
 		getEmailResetPassword: (state, action) => {
-			state.email = action.payload;
+			state.emailReset = action.payload;
 		},
 		logOut: (state) => {
 			state.isLoggedIn = false;

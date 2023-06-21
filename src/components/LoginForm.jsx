@@ -1,4 +1,4 @@
-import { use, useState } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { useDispatch } from 'react-redux';
 import { getToken } from '@/services/accessToken/session';
@@ -12,7 +12,6 @@ import Image from 'next/image';
 import Logo from '../../public/logo.png';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useGetUserQuery } from '@/store/slices/apis';
 import { success, errorRequest, warning } from './notifications/toaster-auth';
 
 // icons
@@ -35,16 +34,7 @@ const LoginForm = () => {
 	const { email, password } = formValue;
 	const [showPassword, setShowPassword] = useState(false);
 	const [loadingUser, setLoadingUser] = useState(true);
-	const [usuario, setUsuario] = useState(null);
-	const [isLogged, setIsLogged] = useState(false);
 
-	const {
-		data: getUserData,
-		isLoading: isLoadingGetUser,
-		error: getUserError,
-		isError: isErrGetUser,
-		isSuccess: isSuccessGetUser,
-	} = useGetUserQuery();
 	const [
 		loginUser,
 		{
@@ -55,7 +45,6 @@ const LoginForm = () => {
 			isSuccess: isLoginsuccess,
 		},
 	] = useLoginUserMutation();
-	console.log(getUserData);
 
 	const handleChange = (e) => {
 		setFormValue({ ...formValue, [e.target.name]: e.target.value });
@@ -70,10 +59,11 @@ const LoginForm = () => {
 		}
 		try {
 			const response = await loginUser(formValue);
-			console.log(response);
+			//console.log(response);
 
 			if (response.data) {
 				success('Login successfully');
+				dispatch(getUser(response.data));
 				router.push('/dashboard/home');
 				setIsLogged(true);
 			}
@@ -88,22 +78,14 @@ const LoginForm = () => {
 
 	useEffect(() => {
 		async function loadingUser() {
-			if (!getToken()) {
+			if (!getToken() && !isLoginsuccess) {
 				setLoadingUser(false);
+
 				return;
-			}
-			try {
-				if (isSuccessGetUser) {
-					setUsuario(getUserData);
-					setLoadingUser(false);
-					router.push('/dashboard/home');
-				}
-			} catch (error) {
-				console.log('erroruser', error);
 			}
 		}
 		loadingUser();
-	}, [router, loadingUser, isSuccessGetUser, getUserData]);
+	}, [isLoginsuccess]);
 
 	return (
 		<>

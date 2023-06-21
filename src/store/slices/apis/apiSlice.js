@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { getToken, setToken } from '@/services/accessToken/session';
+import { getToken, setToken, Login_in } from '@/services/accessToken/session';
 export const apiSlice = createApi({
 	reducerPath: 'apiInventario',
 	baseQuery: fetchBaseQuery({
@@ -17,7 +17,7 @@ export const apiSlice = createApi({
 			transformResponse: (response) => {
 				const { accessToken, id } = response;
 				setToken(accessToken);
-				console.log(accessToken, id);
+				Login_in();
 				return response;
 			},
 		}),
@@ -49,20 +49,15 @@ export const apiSlice = createApi({
 				};
 			},
 		}),
-		// 	getProducts: builder.query({
-		// 		query: () => {
-		// 			return {
-		// 				url: '/products',
-		// 				headers: {
-		// 					Authorization: `Bearer ${getToken()}`,
-		// 				},
-		// 			};
-		// 		},
-		// 		transformResponse: (response) => {
-		// 			const { data } = response;
-		// 			return data;
-		// 		},
-		// 	}),
+		verifyTokenCP: builder.mutation({
+			query: (token) => {
+				return {
+					url: '/auth/verify/token',
+					method: 'POST',
+					body: token,
+				};
+			},
+		}),
 	}),
 });
 

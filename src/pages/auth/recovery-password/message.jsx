@@ -16,7 +16,7 @@ const LoaderLogin = () => {
 };
 
 const Message = () => {
-	const email = useSelector((state) => state.auth.email);
+	const email = useSelector((state) => state.auth.emailReset);
 	console.log(email);
 	const [resent, setResent] = React.useState(false);
 
@@ -44,21 +44,21 @@ const Message = () => {
 			) : (
 				<BsCheckCircleFill className='text-6xl m-2 text-primary' />
 			)}
-			<h1 className=' text-base justify-normal sm:text-2xl pl-7 pr-7 mt-8 font-bold'>
-				We have sent a verification email to Reset your password !{' '}
+			<h1 className=' text-base justify-normal sm:text-xl pl-7 pr-7 mt-8 font-bold'>
+				We have sent a verification email to reset your password !{' '}
 			</h1>
-			<p className=' text-base justify-normal sm:text-2xl pl-7 pr-7 mt-6'>
+			<p className=' text-base justify-normal sm:text-sm pl-7 pr-7 mt-6'>
 				Please check your email inbox and follow the provided steps to complete
 				the process.
 			</p>
-			<p className=' text-base justify-normal sm:text-2xl pl-7 pr-7'>
+			<p className=' text-smjustify-normal sm:text-sm pl-7 pr-7'>
 				If you don&apos;t receive the email, please check your spam folder.
 			</p>
 
 			<button
 				type='submit'
 				onClick={handleChange}
-				className=' text-sm md:text-base text-primary underline hover:text-sky-600 lg:cursor-pointer mt-6'>
+				className=' text-sm md:text-sm text-primary underline hover:text-sky-600 lg:cursor-pointer mt-6'>
 				If you still haven&apos;t received the email, you can request to have
 				the verification message resent.
 			</button>
