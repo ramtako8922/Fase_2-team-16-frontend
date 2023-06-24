@@ -1,23 +1,20 @@
-import { useRouter } from 'next/router';
-import { useState } from 'react';
 import Image from 'next/image';
 import Logo from '../../../../public/logo.png';
-import { useForm } from 'react-hook-form';
+import { useResetPass } from '@/custom-hooks/useRPass';
 import { RiLockLine, RiEyeOffLine, RiEyeLine } from 'react-icons/ri';
-const RecoveryPass = () => {
-	const [showPassword, setShowPassword] = useState(false);
-	const router = useRouter();
-	const {
-		register,
-		handleSubmit,
-		formState: { errors },
-	} = useForm();
-	console.log(router.query);
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-	const onSubmit = (e) => {
-		e.preventDefault();
-		console.log(e);
-	};
+const RecoveryPass = () => {
+	const {
+		showPassword,
+		setShowPassword,
+		handleSubmit,
+		errors,
+		onSubmit,
+		register,
+	} = useResetPass();
+
 	return (
 		<>
 			<div className='min-h-screen flex items-center justify-center p-4 flex-col text-white'>
@@ -27,9 +24,10 @@ const RecoveryPass = () => {
 					className='mb-8 '
 					priority={true}
 				/>
-				<div className=' p-8 rounded-xl shadow-2xl w-auto lg:w-[450px] '>
+
+				<div className='bg-blue-300 p-8 rounded-xl shadow-2xl w-auto lg:w-[450px] '>
 					<h1 className='text-3xl text-center uppercase font-bold tracking-[5px] text-black mb-4'>
-						Change<span className='text-primary'> Password</span>
+						Change<span className='text-white'> Password</span>
 					</h1>
 					<form
 						className='mb-8 mt-8'
@@ -38,8 +36,16 @@ const RecoveryPass = () => {
 							<RiLockLine className='absolute top-1/2 -translate-y-1/2 left-2 text-white' />
 							<input
 								type={showPassword ? 'text' : 'password'}
+								autoComplete='true'
 								className='py-3 px-8 bg-input_auth w-full outline-none rounded-lg'
 								placeholder='Password'
+								{...register('password', {
+									required: true,
+									max: 12,
+									// min: 5,
+									// maxLength: 10,
+									// pattern: /^[A-Za-z]/i,
+								})}
 							/>
 							{showPassword ? (
 								<RiEyeOffLine
@@ -57,8 +63,16 @@ const RecoveryPass = () => {
 							<RiLockLine className='absolute top-1/2 -translate-y-1/2 left-2 text-white' />
 							<input
 								type={showPassword ? 'text' : 'password'}
+								autoComplete='true'
 								className='py-3 px-8 bg-input_auth w-full outline-none rounded-lg'
-								placeholder='Confirm Password'
+								placeholder='confirm Password'
+								{...register('confirm_password', {
+									required: true,
+									// max: 12,
+									// min: 5,
+									// maxLength: 10,
+									// pattern: /^[A-Za-z]/i,
+								})}
 							/>
 							{showPassword ? (
 								<RiEyeOffLine
@@ -75,13 +89,14 @@ const RecoveryPass = () => {
 						<div>
 							<button
 								type='submit'
-								className='bg-primary text-black uppercase font-bold text-sm w-full py-3 px-4 rounded-lg'>
+								className='bg-black text-white uppercase font-bold text-sm w-full py-3 px-4 rounded-lg'>
 								Change my Password
 							</button>
 						</div>
 					</form>
 				</div>
 			</div>
+			<ToastContainer limit={1} />
 		</>
 	);
 };

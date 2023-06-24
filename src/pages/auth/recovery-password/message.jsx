@@ -45,7 +45,7 @@ const Message = () => {
 				<BsCheckCircleFill className='text-6xl m-2 text-primary' />
 			)}
 			<h1 className=' text-base justify-normal sm:text-xl pl-7 pr-7 mt-8 font-bold'>
-				We have sent a verification email to reset your password !{' '}
+				We have sent a verification email to reset your password !
 			</h1>
 			<p className=' text-base justify-normal sm:text-sm pl-7 pr-7 mt-6'>
 				Please check your email inbox and follow the provided steps to complete

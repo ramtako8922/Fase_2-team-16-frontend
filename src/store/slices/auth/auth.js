@@ -15,6 +15,8 @@ export const authSlice = createSlice({
 		emailRegister: '',
 		login_in: false,
 		login_user: '',
+		tokenResetPassword: '',
+		tokenRegister: '',
 	},
 	reducers: {
 		getUser: (state, action) => {
@@ -31,6 +33,12 @@ export const authSlice = createSlice({
 		getEmailResetPassword: (state, action) => {
 			state.emailReset = action.payload;
 		},
+		getTokenResetPassword: (state, action) => {
+			state.tokenResetPassword = action.payload;
+		},
+		getTokenRegister: (state, action) => {
+			state.tokenRegister = action.payload;
+		},
 		logOut: (state) => {
 			state.isLoggedIn = false;
 			state.accessToken = null;
@@ -41,7 +49,13 @@ export const authSlice = createSlice({
 	},
 });
 
-export const { getCredentials, getUser, logOut, getEmailResetPassword } =
-	authSlice.actions;
+export const {
+	getCredentials,
+	getUser,
+	logOut,
+	getEmailResetPassword,
+	getTokenRegister,
+	getTokenResetPassword,
+} = authSlice.actions;
 
 export default authSlice.reducer;

@@ -18,7 +18,7 @@ const Sidebar = () => {
 	return (
 		<>
 			<div
-				className={` overflow-y-hidden fixed lg:static  xl:w-auto min-h-screen top-0 bg-secondary-100 p-4 flex flex-col justify-between z-50 ${
+				className={`  bg-slate-800 text-white overflow-y-hidden fixed lg:static  xl:w-auto min-h-screen top-0 bg-secondary-100 p-4 flex flex-col justify-between z-50 ${
 					showMenu ? 'left-0' : '-left-full'
 				} transition-all`}>
 				<div>

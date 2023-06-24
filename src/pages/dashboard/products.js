@@ -12,7 +12,7 @@ const dashboard = () => {
 				/>
 				<link
 					rel='icon'
-					href='/favicon.ico'
+					href='/login.ico'
 				/>
 			</Head>
 

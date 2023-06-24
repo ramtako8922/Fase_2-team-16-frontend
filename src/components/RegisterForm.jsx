@@ -7,7 +7,7 @@ import { useRegisterUserMutation } from '@/store/slices/apis';
 import { useRouter } from 'next/router';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import LoaderLogin from './LoaderLogin';
+import { LoaderLogin } from './loaders/Loaders';
 import {
 	success,
 	emptyFields,
@@ -75,21 +75,26 @@ const Register = () => {
 
 	return (
 		<>
-			<div className='min-h-screen flex items-center justify-center p-4 flex-col text-white'>
+			<div className=' min-h-screen flex items-center justify-center p-4 flex-col text-white'>
 				<Image
 					src={Logo}
 					alt='Logo ZurmC'
-					className='mb-8 w-auto h-24 '
+					className='w-auto h-24 '
 					priority='true'
+					width='auto'
+					height={100}
 				/>
-				<div className='bg-secondary-100 p-8 rounded-xl shadow-2xl w-auto lg:w-[450px]'>
+				<h1 className='text-cyan-950  mb-4 text-[0.7rem]'>
+					Efficiency at Your Fingertips
+				</h1>
+				<div className='bg-white p-5 rounded-xl shadow-2xl w-auto sm:w-[400px]'>
 					<h1
-						className='text-3xl text-center uppercase font-bold tracking-[5px] text-black fon
-                mb-8'>
+						className='text-xl text-center uppercase font-bold tracking-[2px] text-black fon
+                mb-4'>
 						Create <span className='text-primary'>Account</span>
 					</h1>
 					<form
-						className='mb-8'
+						className='mb-4 pr-2 pl-2'
 						onSubmit={handleSubmit(onSubmit)}>
 						<div className='relative mb-4 '>
 							<RiUserLine className='absolute top-1/2 -translate-y-1/2 left-2 text-primary' />
@@ -182,7 +187,7 @@ const Register = () => {
 								</span>
 							)}
 						</div>
-						<div className='relative mb-8'>
+						<div className='relative mb-4'>
 							<RiLockLine className='absolute top-1/2 -translate-y-1/2 left-2 text-primary' />
 							<input
 								{...register('confirmPassword', {

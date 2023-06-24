@@ -7,7 +7,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { getEmailResetPassword } from '@/store/slices/auth';
 import { Dispatch } from 'react';
-import LoaderLogin from './LoaderLogin';
+import { LoaderLogin } from './loaders/Loaders';
 import {
 	RiMailLine,
 	RiLockLine,
@@ -37,7 +37,6 @@ const ResetPassword = () => {
 		handleSubmit,
 		formState: { errors },
 	} = useForm();
-	console.log(resetPasswordData);
 
 	const onSubmit = async (email) => {
 		setEmail(email.userBody);
@@ -56,17 +55,21 @@ const ResetPassword = () => {
 				<Image
 					src={Logo}
 					alt='Logo ZurmC'
-					className='mb-8 '
 					priority={true}
+					width='auto'
+					height={100}
 				/>
-				<div className=' p-8 rounded-xl shadow-2xl w-auto lg:w-[450px] '>
-					<h1 className='text-3xl text-center uppercase font-bold tracking-[5px] text-black mb-4'>
+				<h1 className='text-blue-800 mb-8 text-[0.7rem]'>
+					Efficiency at Your Fingertips
+				</h1>
+				<div className='bg-white p-5 rounded-xl shadow-2xl w-auto lg:w-[400px] '>
+					<h1 className='text-3xl text-center uppercase font-bold tracking-[4px] text-black mb-4'>
 						Password<span className='text-primary'> Reset</span>
 					</h1>
 					<form
-						className='mb-8 mt-8'
+						className='mb-8 mt-5'
 						onSubmit={handleSubmit(onSubmit)}>
-						<div className='relative mb-8'>
+						<div className='relative mb-4'>
 							<RiMailLine className='absolute top-1/2 -translate-y-1/2 left-2 text-primary' />
 							<input
 								type='email'

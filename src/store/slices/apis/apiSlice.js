@@ -49,12 +49,12 @@ export const apiSlice = createApi({
 				};
 			},
 		}),
-		verifyTokenCP: builder.mutation({
-			query: (token) => {
+		changePassword: builder.mutation({
+			query: ({ tokenResetPassword, newpass }) => {
 				return {
-					url: '/auth/verify/token',
+					url: `/auth/recovery-password/${tokenResetPassword}`,
 					method: 'POST',
-					body: token,
+					body: newpass,
 				};
 			},
 		}),
@@ -66,4 +66,5 @@ export const {
 	useRegisterUserMutation,
 	useGetUserQuery,
 	useResetPasswordMutation,
+	useChangePasswordMutation,
 } = apiSlice;
