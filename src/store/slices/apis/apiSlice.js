@@ -3,7 +3,7 @@ import { getToken, setToken } from '@/services/accessToken/session';
 export const apiSlice = createApi({
 	reducerPath: 'apiInventario',
 	baseQuery: fetchBaseQuery({
-		baseUrl: 'http://localhost:4000/api',
+		baseUrl: 'http://localhost:4000',
 	}),
 	endpoints: (builder) => ({
 
@@ -36,6 +36,16 @@ export const apiSlice = createApi({
 			// 	console.log(access_token, expires_in);
 			// 	return response;
 			// },
+		}),
+
+		createProduct:builder.mutation({
+            query:(newProduct)=>{
+				return{
+                url:"/products",
+                method:"POST",
+                body:newProduct
+				}
+            },
 		}),
 		getUser: builder.query({
 			query: () => {
@@ -86,6 +96,8 @@ export const apiSlice = createApi({
 				return data;
 			},
 		}),
+
+		
 	}),
 });
 
@@ -95,4 +107,5 @@ export const {
 	useGetUserQuery,
 	useGetRefreshTokenMutation,
 	useGetProductsQuery,
+	useCreateProductMutation
 } = apiSlice;
