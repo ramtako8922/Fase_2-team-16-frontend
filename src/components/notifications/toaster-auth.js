@@ -14,9 +14,9 @@ export const success = (message) => {
 };
 
 export const errorRequest = (error) => {
-	toast.error(`🙁😨 ${error}`, {
+	toast.error(`🙁 ${error}`, {
 		position: 'top-right',
-		autoClose: 1300,
+		autoClose: 2300,
 		hideProgressBar: false,
 		closeOnClick: true,
 		pauseOnHover: true,

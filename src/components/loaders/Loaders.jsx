@@ -3,10 +3,10 @@ export const LoaderLogin = () => {
 	return (
 		<>
 			<RaceBy
-				size={300}
+				size={240}
 				lineWeight={5}
 				speed={1}
-				color='black'
+				color='blue'
 			/>
 		</>
 	);

@@ -62,10 +62,13 @@ const ResetPassword = () => {
 				<h1 className='text-blue-800 mb-8 text-[0.7rem]'>
 					Efficiency at Your Fingertips
 				</h1>
-				<div className='bg-white p-5 rounded-xl shadow-2xl w-auto lg:w-[400px] '>
-					<h1 className='text-3xl text-center uppercase font-bold tracking-[4px] text-black mb-4'>
-						Password<span className='text-primary'> Reset</span>
+				<div className='bg-white p-8 rounded-xl shadow-2xl w-auto lg:w-[400px] '>
+					<h1 className='text-3xl text-center uppercase font-bold tracking-[3px] text-black '>
+						Password
 					</h1>
+					<h2 className='text-3xl text-center uppercase font-bold tracking-[3px] text-primary mb-4'>
+						Reset
+					</h2>
 					<form
 						className='mb-8 mt-5'
 						onSubmit={handleSubmit(onSubmit)}>
@@ -86,7 +89,7 @@ const ResetPassword = () => {
 						<div>
 							<button
 								type='submit'
-								className='bg-primary text-black uppercase font-bold text-sm w-full py-3 px-4 rounded-lg'>
+								className='bg-primary hover:bg-blue-600 hover:text-white text-black uppercase font-bold text-sm w-full py-3 px-4 rounded-lg mt-4 outline-none focus:ring-4 shadow-lg transform active:scale-y-75 transition-transform'>
 								Reset my Password
 							</button>
 						</div>

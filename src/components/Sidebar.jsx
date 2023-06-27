@@ -22,7 +22,7 @@ const Sidebar = () => {
 					showMenu ? 'left-0' : '-left-full'
 				} transition-all`}>
 				<div>
-					<h1 className='text-center text-2xl font-bold text-black mb-10'>
+					<h1 className='text-center text-2xl font-bold text-white mb-10'>
 						Admin<span className='text-primary text-5xl'>.</span>
 					</h1>
 					<ul>

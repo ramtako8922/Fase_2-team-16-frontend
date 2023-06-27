@@ -33,7 +33,7 @@ export const productSlice = createSlice({
 	name: 'Product',
 	initialState: {
 		id: '',
-		name: '',
+		name_product: '',
 		category: '',
 		price: '',
 		stock: '',
@@ -43,10 +43,8 @@ export const productSlice = createSlice({
 	},
 	reducers: {
 		getProduct: (state, action) => {
-			const { id, name, category, price, stock, image, description } =
-				action.payload;
 			state.id = id;
-			state.name = name;
+			state.name = name_product;
 			state.category = category;
 			state.price = price;
 			state.stock = stock;
@@ -54,7 +52,7 @@ export const productSlice = createSlice({
 			state.description = description;
 		},
 		changeName: (state, action) => {
-			state.name = action.payload;
+			state.name_product = action.payload;
 		},
 		changeCategories: (state, action) => {
 			state.category = action.payload;

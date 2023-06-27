@@ -67,6 +67,8 @@ const Message = () => {
 				alt='Logo ZurmC'
 				className=' mt-6 md:mt-16 w-auto h-auto '
 				priority='true'
+				width='auto'
+				height={100}
 			/>
 			<p>Thank you for your time!</p>
 		</div>

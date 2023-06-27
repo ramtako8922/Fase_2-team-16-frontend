@@ -17,8 +17,9 @@ module.exports = {
 				primary: '#EE6C4D',
 				secondary: '#6D5BD0',
 				input_auth: '#2C3E5E',
+				error: '#FF0000',
 			},
 		},
 	},
-	plugins: [],
+	plugins: [require('daisyui')],
 };

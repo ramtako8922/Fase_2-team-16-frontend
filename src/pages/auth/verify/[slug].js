@@ -39,7 +39,7 @@ export async function getServerSideProps({ query: { slug } }) {
 	const url = `https://api-trycatch-test.fly.dev/auth/verify/${slug}`;
 	const res = await fetch(url);
 	const validity = await res.json();
-	console.log(validity);
+	// console.log(validity);
 	return {
 		props: {
 			validity,

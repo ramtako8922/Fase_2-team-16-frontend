@@ -60,6 +60,7 @@ const Register = () => {
 			};
 			console.log(user);
 			registerUser(user);
+			registerform.reset();
 		}
 	};
 	useEffect(() => {
@@ -94,6 +95,7 @@ const Register = () => {
 						Create <span className='text-primary'>Account</span>
 					</h1>
 					<form
+						id='registerform'
 						className='mb-4 pr-2 pl-2'
 						onSubmit={handleSubmit(onSubmit)}>
 						<div className='relative mb-4 '>

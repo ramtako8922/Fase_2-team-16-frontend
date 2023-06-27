@@ -14,16 +14,18 @@ import {
 
 const LoginForm = () => {
 	const {
-		handleChange,
 		handleSubmit,
 		isLoadingLogin,
 		showPassword,
 		setShowPassword,
+		errors,
+		register,
+		onSubmit,
 	} = useLoginUser();
 
 	return (
 		<>
-			<div className='min-h-auto  flex items-center justify-center p-4 flex-col text-white'>
+			<div className='min-h-auto  flex items-center justify-center p-3 flex-col text-white'>
 				<Image
 					src={Logo}
 					alt='Logo ZurmC'
@@ -34,32 +36,41 @@ const LoginForm = () => {
 				<h1 className='text-blue-800 mb-8 text-[0.7rem]'>
 					Efficiency at Your Fingertips
 				</h1>
-				<div className='bg-white p-8 rounded-xl shadow-2xl w-auto lg:w-[400px]'>
-					<h1 className='text-3xl text-center uppercase font-bold tracking-[5px] text-black mb-8'>
-						Sing <span className='text-primary'>Up</span>
+				<div className='bg-white pt-4 pb-4 p-6 rounded-xl shadow-2xl w-auto lg:w-[400px]'>
+					<h1 className='text-4xl text-center uppercase font-bold tracking-[1px] text-black mb-8'>
+						Log <span className='text-primary'>In</span>
 					</h1>
 					<form
-						className='mb-8 '
-						onSubmit={handleSubmit}>
-						<div className='relative mb-4 '>
+						className='mb-5 '
+						onSubmit={handleSubmit(onSubmit)}>
+						<div className='relative mb-7 '>
 							<RiMailLine className='absolute top-1/2 -translate-y-1/2 left-2 text-primary' />
 							<input
-								onChange={handleChange}
-								name='email'
+								id='email'
 								type='email'
+								name='email'
 								className='py-3 pl-8 pr-4 bg-input_auth w-full focus:bg-input_auth outline-none rounded-lg'
 								placeholder='example@example.com'
+								{...register('email', {
+									required: true,
+									max: 30,
+									min: 8,
+									maxLength: 30,
+								})}
 							/>
+							<p className='absolute w-full top-1/2 text-sm translate-y-[90%] left-2  text-error mt-2 mb-2 text-center'>
+								{errors.email?.message}
+							</p>
 						</div>
-						<div className='relative mb-8'>
+						<div className='relative  mb-7'>
 							<RiLockLine className='absolute top-1/2 -translate-y-1/2 left-2 text-primary' />
 							<input
-								onChange={handleChange}
-								name='password'
 								autoComplete='true'
+								name='password'
 								type={showPassword ? 'text' : 'password'}
-								className='py-3 px-8 bg-input_auth w-full outline-none rounded-lg'
+								className=' py-3 px-8 bg-input_auth w-full outline-none rounded-lg'
 								placeholder='Password'
+								{...register('password')}
 							/>
 							{showPassword ? (
 								<RiEyeOffLine
@@ -72,31 +83,35 @@ const LoginForm = () => {
 									className='absolute top-1/2 -translate-y-1/2 right-2 hover:cursor-pointer text-primary'
 								/>
 							)}
+							<p className='absolute w-full top-1/2 text-sm translate-y-[60%] md:translate-y-[1.5rem] left-2  text-error mt-2 mb-2 text-center'>
+								{errors.password?.message}
+							</p>
 						</div>
 						<div>
 							<button
+								disabled={isLoadingLogin}
 								type='submit'
-								className='bg-primary text-black uppercase font-bold text-sm w-full py-3 px-4 rounded-lg'>
-								Login
+								className='bg-primary hover:bg-blue-600 hover:text-white text-black uppercase font-bold text-sm w-full py-3 px-4 rounded-lg mt-4 outline-none  shadow-lg transform active:scale-x-75 transition-transform'>
+								<span className='ml-2'>Login</span>
 							</button>
 						</div>
 					</form>
-					<div className='flex flex-col items-center gap-4'>
+					<div className='flex flex-col items-center gap-2'>
 						<Link
 							href='/auth/forgotpassword'
-							className='hover:text-primary text-black transition-colors '>
+							className='text-sm hover:text-primary text-black transition-colors '>
 							Forget your password?
 						</Link>
 						<Link
 							href='/auth/register'
 							rel='noopener noreferrer'
-							className='hover:text-primary text-black transition-colors '>
+							className=' text-sm hover:text-primary text-black transition-colors '>
 							Create account
 						</Link>
 					</div>
 				</div>
 				<ToastContainer limit={1} />
-				<div className=' flex justify-center items-center'>
+				<div className='mt-5 flex justify-center items-center'>
 					{isLoadingLogin ? <LoaderLogin /> : null}
 				</div>
 			</div>
