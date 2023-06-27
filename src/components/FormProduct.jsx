@@ -1,8 +1,4 @@
-import {
-	
-	RiArchiveDrawerFill,
-	RiBarChart2Fill
-} from 'react-icons/ri';
+import { RiArchiveDrawerFill, RiBarChart2Fill } from 'react-icons/ri';
 import { HiCurrencyDollar } from 'react-icons/hi';
 import { BsFillBoxFill } from 'react-icons/bs';
 import { MdDescription, MdConfirmationNumber } from 'react-icons/md';
@@ -12,15 +8,17 @@ import Image from 'next/image';
 import useFormProduct from '@/hooks/useFormProduct';
 
 const FormProduct = () => {
-	const{handlerChange,handlerSubmit}=useFormProduct()
-	
+	const { handlerChange, handlerSubmit } = useFormProduct();
+
 	return (
 		<div className=' min-h-screen flex items-center justify-center p-4 flex-col text-white'>
 			<div className='bg-secondary-100 p-8 rounded-xl  w-auto lg:w-[450px]'>
 				<h1 className='text-3xl text-center uppercase font-bold tracking-[5px] text-black mb-8'>
 					New <span className='text-primary'>Product</span>
 				</h1>
-				<form className='mb-8' onSubmit={handlerSubmit}>
+				<form
+					className='mb-8'
+					onSubmit={handlerSubmit}>
 					<div className='relative mb-4'>
 						<BsFillBoxFill className='absolute top-1/2 -translate-y-1/2 left-2 text-white' />
 						<input
@@ -28,7 +26,6 @@ const FormProduct = () => {
 							className='py-3 pl-8 pr-4 bg-input_auth w-full focus:bg-input_auth outline-none rounded-lg'
 							placeholder='Name product'
 							name='nameproduct'
-							value="prueba"
 							onChange={handlerChange}
 						/>
 					</div>
@@ -87,7 +84,7 @@ const FormProduct = () => {
 						</select>
 					</div> */}
 					<div>
-						<button 
+						<button
 							type='submit'
 							className='bg-primary text-black uppercase font-bold text-sm w-full py-3 px-4 rounded-lg'>
 							Register
@@ -100,7 +97,6 @@ const FormProduct = () => {
 					className='mt-8 translate-y-20'
 				/>
 			</div>
-			
 		</div>
 	);
 };
