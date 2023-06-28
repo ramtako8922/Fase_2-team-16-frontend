@@ -43,23 +43,14 @@ export const useLoginUser = () => {
 
 	const onSubmit = async (data) => {
 		try {
-			const response = await loginUser(data);
-
+			await loginUser(data).unwrap();
+			success('Login successfully');
 			reset();
-			if (response.data) {
-				success('Login successfully');
-				router.push('/dashboard/home');
-				setLoadingUser(false);
-			}
-			if (response.error) {
-				errorRequest(
-					response.error.data
-						? response.error.data?.message
-						: 'Error server try again'
-				);
-			}
+			router.push('/dashboard/home');
 		} catch (error) {
-			console.log('error', error);
+			if (error.status === 401) {
+				warning(error.data?.message);
+			}
 		}
 	};
 
