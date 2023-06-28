@@ -7,7 +7,6 @@ const FetchWithAuth = async (url, options) => {
 	const router = useRouter();
 
 	if (expirationTime < 300) {
-		console.log(getToken());
 		// if token is about to expire (less than 5 minutes)
 		const newTokens = await fetch(
 			'https://api-inventario.onrender.com/auth/refresh',
@@ -20,12 +19,11 @@ const FetchWithAuth = async (url, options) => {
 				},
 			}
 		).then((response) => response.json());
-		console.log(newTokens);
+
 		if (newTokens) {
 			// setToken(newTokens.data.access_token);
 			// setExpiration(newTokens.data.expires_in);
 			// if new access token is returned
-			console.log('guardando token');
 			// update local storage or global state with new tokens
 		} else {
 			// if new access token is not returned, redirect to login page

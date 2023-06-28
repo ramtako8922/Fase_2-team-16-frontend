@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 const validateToken = async (request) => {
 	const token = request.cookies.get('ZurmSesionT');
-	// console.log('token', token);
+
 	if (!token) {
 		// Si no se proporciona un token, redirige al usuario a /auth/login
 		return NextResponse.redirect(new URL('/auth/login', request.url));
@@ -16,8 +16,6 @@ const validateToken = async (request) => {
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				// console.log('data', data);
-
 				if (data && data.id !== undefined && data.status === 'true') {
 					// Si el token es válido, permite el acceso a la ruta
 					return NextResponse.next();
@@ -26,14 +24,12 @@ const validateToken = async (request) => {
 					return NextResponse.redirect(new URL('/auth/login', request.url));
 				}
 			});
-	} catch (error) {
-		//console.log('error', error);
-	}
+	} catch (error) {}
 };
 
 const validateLogin = async (request) => {
 	const islogin = request.cookies.get('Login_in');
-	//console.log('islogin', islogin);
+
 	if (islogin) {
 		return NextResponse.redirect(new URL('/dashboard/home', request.url));
 	}

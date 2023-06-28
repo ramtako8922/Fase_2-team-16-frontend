@@ -9,7 +9,7 @@ export const RecoveryPass = (props) => {
 	const validityChange = props.validity.message;
 	const token = props.slug;
 	const dispatch = useDispatch();
-	//console.log(token);
+
 	useEffect(() => {
 		if (validityChange === 'The entered token is valid') {
 			dispatch(getTokenResetPassword(token));
@@ -32,7 +32,6 @@ export async function getServerSideProps({ query: { slug } }) {
 	const url = `https://api-trycatch-test.fly.dev/auth/verify/token/${slug}`;
 	const res = await fetch(url);
 	const validity = await res.json();
-	// console.log(validity.message);
 
 	return {
 		props: {

@@ -1,4 +1,5 @@
-import { RaceBy, Ping } from '@uiball/loaders';
+import { RaceBy, Ping, DotSpinner } from '@uiball/loaders';
+
 export const LoaderLogin = () => {
 	return (
 		<>
@@ -21,5 +22,15 @@ export const LoaderResetPassword = () => {
 				color='#EE6C4D'
 			/>
 		</>
+	);
+};
+
+export const LoaderSendEmail = () => {
+	return (
+		<DotSpinner
+			size={40}
+			speed={0.9}
+			color='black'
+		/>
 	);
 };

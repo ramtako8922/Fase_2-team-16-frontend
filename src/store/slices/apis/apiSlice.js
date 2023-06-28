@@ -45,7 +45,9 @@ export const apiSlice = createApi({
 				return {
 					url: '/auth/forgot-password',
 					method: 'POST',
-					body: email,
+					body: {
+						userBody: email,
+					},
 				};
 			},
 		}),

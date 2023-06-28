@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-// Icons
+import { useSelector } from 'react-redux';
+// =============================Icons=====================================
 import {
 	RiBarChart2Line,
 	RiCustomerService2Line,
@@ -11,8 +12,13 @@ import {
 	RiCloseLine,
 } from 'react-icons/ri';
 import { SiPcgamingwiki } from 'react-icons/si';
+import { array } from 'yup';
 
 const Sidebar = () => {
+	const { roles } = useSelector((state) => state.auth);
+
+	const result = roles[0]?.replace('ROLE_', '').toUpperCase();
+
 	const [showMenu, setShowMenu] = useState(false);
 	const [showSubmenu, setShowSubmenu] = useState(false);
 	return (
@@ -23,7 +29,8 @@ const Sidebar = () => {
 				} transition-all`}>
 				<div>
 					<h1 className='text-center text-2xl font-bold text-white mb-10'>
-						Admin<span className='text-primary text-5xl'>.</span>
+						{result}
+						<span className='text-primary text-5xl'>.</span>
 					</h1>
 					<ul>
 						<li>
@@ -54,21 +61,21 @@ const Sidebar = () => {
 								} overflow-y-hidden transition-all`}>
 								<li>
 									<Link
-										href='/dashboard/home'
+										href='#'
 										className='py-2 px-4 border-l border-gray-500 ml-6 block relative before:w-3 before:h-3 before:absolute before:bg-primary before:rounded-full before:-left-[6.5px] before:top-1/2 before:-translate-y-1/2 before:border-4 before:border-secondary-100 hover:text-white transition-colors'>
 										Gaming
 									</Link>
 								</li>
 								<li>
 									<Link
-										href='/dashboard/home'
+										href='#'
 										className='py-2 px-4 border-l border-gray-500 ml-6 block relative before:w-3 before:h-3 before:absolute before:bg-gray-500 before:rounded-full before:-left-[6.5px] before:top-1/2 before:-translate-y-1/2 before:border-4 before:border-secondary-100 hover:text-white transition-colors'>
 										Office
 									</Link>
 								</li>
 								<li>
 									<Link
-										href='/dashboard/home'
+										href='#'
 										className='py-2 px-4 border-l border-gray-500 ml-6 block relative before:w-3 before:h-3 before:absolute before:bg-gray-500 before:rounded-full before:-left-[6.5px] before:top-1/2 before:-translate-y-1/2 before:border-4 before:border-secondary-100 hover:text-white transition-colors'>
 										Photography
 									</Link>
@@ -77,14 +84,14 @@ const Sidebar = () => {
 						</li>
 						<li>
 							<Link
-								href='/dashboard/home'
+								href='#'
 								className='flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-secondary-900 transition-colors'>
 								<RiCustomerService2Line className='text-primary' /> Tickets
 							</Link>
 						</li>
 						<li>
 							<Link
-								href='/dashboard/home'
+								href='#'
 								className='flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-secondary-900 transition-colors'>
 								<RiCalendarTodoLine className='text-primary' /> Calendar
 							</Link>

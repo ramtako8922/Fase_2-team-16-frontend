@@ -2,45 +2,18 @@ import React from 'react';
 import { BsCheckCircleFill } from 'react-icons/bs';
 import Image from 'next/image';
 import Logo from '../../../../public/logo.png';
-import { useResetPasswordMutation } from '@/store/slices/apis';
-import { DotSpinner } from '@uiball/loaders';
-import { useSelector } from 'react-redux';
-const LoaderLogin = () => {
-	return (
-		<DotSpinner
-			size={40}
-			speed={0.9}
-			color='black'
-		/>
-	);
-};
+import { LoaderSendEmail } from '@/components/loaders/Loaders';
+import { useVerifyEmailRP } from '@/custom-hooks/useRPass';
+
+//TODO: Add loader and prerendering 👁️👁️
 
 const Message = () => {
-	const email = useSelector((state) => state.auth.emailReset);
-	console.log(email);
-	const [resent, setResent] = React.useState(false);
+	const { handleChange, isResetLoading, resent } = useVerifyEmailRP();
 
-	const [
-		resetPassword,
-		{
-			data: resetPasswordData,
-			isLoading: isResetLoading,
-			error: ResetPasswordError,
-			isError: isErrResetPassword,
-			isSuccess: isResetSuccess,
-		},
-	] = useResetPasswordMutation();
-
-	const handleChange = () => {
-		setResent(true);
-		resetPassword({ userBody: email });
-	};
-
-	console.log(resent);
 	return (
 		<div className='w-screen h-screen text-black flex justify-center items-center text-center flex-col text-sm md:text-base m-0'>
 			{isResetLoading ? (
-				<LoaderLogin />
+				<LoaderSendEmail />
 			) : (
 				<BsCheckCircleFill className='text-6xl m-2 text-primary' />
 			)}

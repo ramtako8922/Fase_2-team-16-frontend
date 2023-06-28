@@ -36,12 +36,12 @@ const LoginForm = () => {
 				<h1 className='text-blue-800 mb-8 text-[0.7rem]'>
 					Efficiency at Your Fingertips
 				</h1>
-				<div className='bg-white pt-4 pb-4 p-6 rounded-xl shadow-2xl w-auto lg:w-[400px]'>
+				<div className='bg-white pt-4 pb-4 p-6 rounded-xl shadow-2xl w-auto lg:w-[320px]'>
 					<h1 className='text-4xl text-center uppercase font-bold tracking-[1px] text-black mb-8'>
 						Log <span className='text-primary'>In</span>
 					</h1>
 					<form
-						className='mb-5 '
+						className='mb-6 '
 						onSubmit={handleSubmit(onSubmit)}>
 						<div className='relative mb-7 '>
 							<RiMailLine className='absolute top-1/2 -translate-y-1/2 left-2 text-primary' />
@@ -51,12 +51,7 @@ const LoginForm = () => {
 								name='email'
 								className='py-3 pl-8 pr-4 bg-input_auth w-full focus:bg-input_auth outline-none rounded-lg'
 								placeholder='example@example.com'
-								{...register('email', {
-									required: true,
-									max: 30,
-									min: 8,
-									maxLength: 30,
-								})}
+								{...register('email')}
 							/>
 							<p className='absolute w-full top-1/2 text-sm translate-y-[90%] left-2  text-error mt-2 mb-2 text-center'>
 								{errors.email?.message}

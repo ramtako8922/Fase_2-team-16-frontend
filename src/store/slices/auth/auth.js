@@ -13,25 +13,33 @@ export const authSlice = createSlice({
 		roles: '',
 		emailReset: '',
 		emailRegister: '',
+		isRegister: false,
 		login_in: false,
 		login_user: '',
 		tokenResetPassword: '',
+		sendEmailResetPassword: false,
 		tokenRegister: '',
 	},
 	reducers: {
-		getUser: (state, action) => {
-			state.isLoggedIn = true;
-			state.id = action.payload.id;
-			state.accessToken = action.payload.accessToken;
-			state.name = action.payload.name;
-			state.username = action.payload.username;
-			state.lastname = action.payload.lastname;
-			state.roles = action.payload.roles;
+		setUser: (state, action) => {
 			state.email = action.payload.email;
-			state.login_in = true;
+			state.id = action.payload.id;
+			state.lastname = action.payload.lastname;
+			state.name = action.payload.name;
+			state.roles = action.payload.roles;
+			state.username = action.payload.username;
 		},
-		getEmailResetPassword: (state, action) => {
+		getEmailRegister: (state, action) => {
+			state.emailRegister = action.payload;
+		},
+		getIsRegsiter: (state, action) => {
+			state.isRegister = action.payload;
+		},
+		setEmailResetPassword: (state, action) => {
 			state.emailReset = action.payload;
+		},
+		sendEmailResetPassword: (state, action) => {
+			state.sendEmailResetPassword = action.payload;
 		},
 		getTokenResetPassword: (state, action) => {
 			state.tokenResetPassword = action.payload;
@@ -39,23 +47,27 @@ export const authSlice = createSlice({
 		getTokenRegister: (state, action) => {
 			state.tokenRegister = action.payload;
 		},
-		logOut: (state) => {
-			state.isLoggedIn = false;
-			state.accessToken = null;
-			state.email = null;
-			state.id = null;
-			state.name = null;
+		logOutUser: (state, action) => {
+			state.email = action.payload.email;
+			state.id = action.payload.id;
+			state.lastname = action.payload.lastname;
+			state.name = action.payload.name;
+			state.roles = action.payload.roles;
+			state.username = action.payload.username;
 		},
 	},
 });
 
 export const {
 	getCredentials,
-	getUser,
-	logOut,
-	getEmailResetPassword,
+	setUser,
+	logOutUser,
+	setEmailResetPassword,
 	getTokenRegister,
 	getTokenResetPassword,
+	sendEmailResetPassword,
+	getIsRegsiter,
+	getEmailRegister,
 } = authSlice.actions;
 
 export default authSlice.reducer;

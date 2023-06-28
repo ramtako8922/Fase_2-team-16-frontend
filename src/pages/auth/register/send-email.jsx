@@ -1,9 +1,10 @@
 import React from 'react';
 import LayoutAuth from '@/layouts/LayoutAuth';
 import Head from 'next/head';
-import SuccesRegister from '../../components/SuccesRegister';
-
+import SuccesRegister from '../../../components/SuccesRegister';
+import { useInfoSendMail } from '@/custom-hooks/useRegister';
 const Login = () => {
+	useInfoSendMail();
 	return (
 		<>
 			<Head>

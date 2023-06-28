@@ -1,13 +1,9 @@
-import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { useForm } from 'react-hook-form';
 import Image from 'next/image';
-import { useResetPasswordMutation } from '@/store/slices/apis';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { getEmailResetPassword } from '@/store/slices/auth';
-import { Dispatch } from 'react';
 import { LoaderLogin } from './loaders/Loaders';
+import { useEmailRP } from '@/custom-hooks/useRPass';
 import {
 	RiMailLine,
 	RiLockLine,
@@ -15,39 +11,10 @@ import {
 	RiEyeOffLine,
 } from 'react-icons/ri';
 import Logo from '../../public/logo.png';
-import { useRouter } from 'next/router';
-import { useDispatch } from 'react-redux';
 
 const ResetPassword = () => {
-	const dispatch = useDispatch();
-	const [email, setEmail] = useState('');
-	const [
-		resetPassword,
-		{
-			data: resetPasswordData,
-			isLoading: isResetLoading,
-			error: ResetPasswordError,
-			isError: isErrResetPassword,
-			isSuccess: isResetSuccess,
-		},
-	] = useResetPasswordMutation();
-	const router = useRouter();
-	const {
-		register,
-		handleSubmit,
-		formState: { errors },
-	} = useForm();
-
-	const onSubmit = async (email) => {
-		setEmail(email.userBody);
-		resetPassword(email);
-	};
-	useEffect(() => {
-		if (isResetSuccess) {
-			dispatch(getEmailResetPassword(email));
-			router.push('/auth/recovery-password/message');
-		}
-	}, [isResetSuccess, router, dispatch, email]);
+	const { register, errors, handleSubmit, onSubmit, isResetLoading } =
+		useEmailRP();
 
 	return (
 		<>
@@ -62,7 +29,7 @@ const ResetPassword = () => {
 				<h1 className='text-blue-800 mb-8 text-[0.7rem]'>
 					Efficiency at Your Fingertips
 				</h1>
-				<div className='bg-white p-8 rounded-xl shadow-2xl w-auto lg:w-[400px] '>
+				<div className='bg-white p-5 rounded-xl shadow-2xl w-auto lg:w-[320px] '>
 					<h1 className='text-3xl text-center uppercase font-bold tracking-[3px] text-black '>
 						Password
 					</h1>
@@ -76,20 +43,19 @@ const ResetPassword = () => {
 							<RiMailLine className='absolute top-1/2 -translate-y-1/2 left-2 text-primary' />
 							<input
 								type='email'
-								{...register('userBody', {
-									required: true,
-									maxLength: 43,
-									minLength: 5,
-									pattern: /^[\w-.]+@([\w-]+\.)+[\w-]{2,}$/i,
-								})}
+								{...register('email')}
 								className='py-3 pl-8 pr-4 bg-input_auth w-full outline-none rounded-lg'
 								placeholder='Email'
 							/>
+							<p className='absolute w-full top-1/2 text-sm translate-y-[80%] md:translate-y-[100%] left-2  text-error mt-2 mb-2 text-center'>
+								{errors.email?.message}
+							</p>
 						</div>
+
 						<div>
 							<button
 								type='submit'
-								className='bg-primary hover:bg-blue-600 hover:text-white text-black uppercase font-bold text-sm w-full py-3 px-4 rounded-lg mt-4 outline-none focus:ring-4 shadow-lg transform active:scale-y-75 transition-transform'>
+								className='bg-primary hover:bg-blue-600 hover:text-white text-black uppercase font-bold text-sm w-full py-3 px-4 rounded-lg mt-4 outline-none  shadow-lg transform active:scale-x-75 transition-transform'>
 								Reset my Password
 							</button>
 						</div>

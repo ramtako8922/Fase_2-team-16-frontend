@@ -14,6 +14,7 @@ const RecoveryPass = () => {
 		errors,
 		onSubmit,
 		register,
+		tokenResetPassword,
 	} = useResetPass();
 
 	return (

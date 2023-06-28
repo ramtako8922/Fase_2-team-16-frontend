@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { getUser } from '@/store/slices/auth';
 import { useDispatch } from 'react-redux';
 import { useLoginUserMutation } from '@/store/slices/apis';
 import { useForm } from 'react-hook-form';
@@ -49,7 +48,6 @@ export const useLoginUser = () => {
 			reset();
 			if (response.data) {
 				success('Login successfully');
-				dispatch(getUser(response.data));
 				router.push('/dashboard/home');
 				setLoadingUser(false);
 			}
@@ -61,8 +59,7 @@ export const useLoginUser = () => {
 				);
 			}
 		} catch (error) {
-			console.log('err', error);
-			errorRequest(error.data?.message);
+			console.log('error', error);
 		}
 	};
 
