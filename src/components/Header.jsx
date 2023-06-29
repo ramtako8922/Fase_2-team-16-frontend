@@ -164,7 +164,7 @@ const Header = () => {
 								])}
 							/>
 							<div className='flex flex-col text-sm'>
-								<span className='text-sm text-orange-600'>{name}X</span>
+								<span className='text-sm text-orange-600'>{name}</span>
 								<span className='text-xs text-gray-500'>{email}</span>
 							</div>
 						</Link>

@@ -12,7 +12,6 @@ import {
 	RiCloseLine,
 } from 'react-icons/ri';
 import { SiPcgamingwiki } from 'react-icons/si';
-import { array } from 'yup';
 
 const Sidebar = () => {
 	const { roles } = useSelector((state) => state.auth);
@@ -28,7 +27,7 @@ const Sidebar = () => {
 					showMenu ? 'left-0' : '-left-full'
 				} transition-all`}>
 				<div>
-					<h1 className='text-center text-2xl font-bold text-white mb-10'>
+					<h1 className='text-center text-xl font-bold text-white mb-10'>
 						{result}
 						<span className='text-primary text-5xl'>.</span>
 					</h1>

@@ -1,9 +1,9 @@
 import { toast } from 'react-toastify';
 
 export const success = (message) => {
-	return toast.success(`😍 ${message}`, {
+	return toast.success(` ${message}`, {
 		position: 'top-right',
-		autoClose: 2300,
+		autoClose: 2800,
 		hideProgressBar: false,
 		closeOnClick: true,
 		pauseOnHover: true,
@@ -14,7 +14,7 @@ export const success = (message) => {
 };
 
 export const errorRequest = (error) => {
-	toast.error(`🙁 ${error}`, {
+	toast.error(` ${error}`, {
 		position: 'top-right',
 		autoClose: 2300,
 		hideProgressBar: false,
@@ -36,5 +36,17 @@ export const warning = (message) => {
 		draggable: true,
 		progress: undefined,
 		theme: 'dark',
+	});
+};
+export const info = (message) => {
+	toast.info(` ${message}`, {
+		position: 'bottom-center',
+		autoClose: 5000,
+		hideProgressBar: false,
+		closeOnClick: true,
+		pauseOnHover: true,
+		draggable: true,
+		progress: undefined,
+		theme: 'colored',
 	});
 };

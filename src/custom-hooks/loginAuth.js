@@ -1,18 +1,27 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
-import { useLoginUserMutation } from '@/store/slices/apis';
+import {
+	useLoginUserMutation,
+	useVerifyAccountMutation,
+} from '@/store/slices/apis';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { loginSchema } from '@/validations/UserValidation';
+
 import {
 	success,
 	errorRequest,
-	warning,
+	info,
 } from '@/components/notifications/toaster-auth';
 
 export const useLoginUser = () => {
+	const router = useRouter();
+	const dispatch = useDispatch();
+	const [showPassword, setShowPassword] = useState(false);
+
+	// =============================================React Hook Form===================================
 	const {
 		register,
 		handleSubmit,
@@ -25,11 +34,7 @@ export const useLoginUser = () => {
 		},
 		resolver: yupResolver(loginSchema),
 	});
-	const router = useRouter();
-	const dispatch = useDispatch();
-
-	const [showPassword, setShowPassword] = useState(false);
-	const [loadingUser, setLoadingUser] = useState(true);
+	// =============================================Fetch login=========================================
 	const [
 		loginUser,
 		{
@@ -40,16 +45,47 @@ export const useLoginUser = () => {
 			isSuccess: isLoginsuccess,
 		},
 	] = useLoginUserMutation();
+	// =============================================Fetch verify account===================================
+	const [
+		verifyAccount,
+		{
+			data: verifyData,
+			isLoading: isLoadingVerify,
+			error: verifyError,
+			isError: isVerifyErr,
+			isSuccess: isVerifysuccess,
+		},
+	] = useVerifyAccountMutation();
 
 	const onSubmit = async (data) => {
 		try {
 			await loginUser(data).unwrap();
-			success('Login successfully');
+			success('🤩Login successfully');
 			reset();
 			router.push('/dashboard/home');
 		} catch (error) {
-			if (error.status === 401) {
-				warning(error.data?.message);
+			reset();
+			switch (error.status) {
+				case 400:
+					errorRequest('😞 Invalid credentials');
+					break;
+				case 401:
+					errorRequest(error.data?.message);
+					if (error.data.message === 'Please verify your email address') {
+						console.log('envian el correo');
+						info(
+							'📧 Verify your email. We have sent a verification email. Check your spam folder. Thank you!'
+						);
+						verifyAccount(data.email);
+						return;
+					}
+					break;
+				case 404:
+					errorRequest('⚠️ User not exist ');
+					break;
+				case 500:
+					errorRequest('🚨 Server error');
+					break;
 			}
 		}
 	};

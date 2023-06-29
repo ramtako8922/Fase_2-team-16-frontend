@@ -105,7 +105,10 @@ const LoginForm = () => {
 						</Link>
 					</div>
 				</div>
-				<ToastContainer limit={1} />
+				<ToastContainer
+					limit={1}
+					className='text-sm md:text-base'
+				/>
 				<div className='mt-5 flex justify-center items-center'>
 					{isLoadingLogin ? <LoaderLogin /> : null}
 				</div>

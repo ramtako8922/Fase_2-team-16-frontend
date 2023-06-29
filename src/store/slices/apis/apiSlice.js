@@ -60,6 +60,17 @@ export const apiSlice = createApi({
 				};
 			},
 		}),
+		verifyAccount: builder.mutation({
+			query: (email) => {
+				return {
+					url: '/auth/re-activate/',
+					method: 'POST',
+					body: {
+						userBody: email,
+					},
+				};
+			},
+		}),
 	}),
 });
 
@@ -69,4 +80,5 @@ export const {
 	useGetUserQuery,
 	useResetPasswordMutation,
 	useChangePasswordMutation,
+	useVerifyAccountMutation,
 } = apiSlice;
