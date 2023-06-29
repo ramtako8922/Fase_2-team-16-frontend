@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { LoaderResetPassword } from '../../../components/loaders/Loaders';
 import { useState } from 'react';
 import { BsCheckCircleFill } from 'react-icons/bs';
+import Head from 'next/head';
 export const RecoveryPass = (props) => {
 	const validityChange = props.validity.message;
 	const [success, setSuccess] = useState(false);
@@ -18,6 +19,22 @@ export const RecoveryPass = (props) => {
 
 	return (
 		<>
+			<Head>
+				<title>Success Register</title>
+				<meta
+					name='description'
+					content='Register Account'
+				/>
+				<meta
+					name='viewport'
+					content='width=device-width, initial-scale=1'
+				/>
+				<link
+					rel='icon'
+					href='/verify.gif'
+				/>
+			</Head>
+
 			<div className='flex justify-center items-center w-screen h-screen flex-col'>
 				{false ? (
 					<LoaderResetPassword />

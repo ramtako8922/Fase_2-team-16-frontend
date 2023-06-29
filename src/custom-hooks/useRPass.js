@@ -9,8 +9,12 @@ import * as yup from 'yup';
 import { resetPasswordSchema } from '@/validations/UserValidation';
 import { useResetPasswordMutation } from '@/store/slices/apis';
 import { useDispatch } from 'react-redux';
-import { setEmailResetPassword } from '@/store/slices/auth';
-import { sendEmailResetPassword } from '@/store/slices/auth';
+import {
+	setEmailResetPassword,
+	sendEmailResetPassword,
+	setIsValidChangePassword,
+} from '@/store/slices/auth';
+
 import { forgotPasswordSchema } from '@/validations/UserValidation';
 // =================================================================send email reset password==============================================
 
@@ -18,15 +22,10 @@ export const useEmailRP = () => {
 	const dispatch = useDispatch();
 	const [sendEmailRP, setSendEmailRP] = useState(false);
 	const [email, setEmail] = useState('');
+	const [isValidCP, setIsValidCP] = useState(false);
 	const [
 		resetPassword,
-		{
-			data: resetPasswordData,
-			isLoading: isResetLoading,
-			error: ResetPasswordError,
-			isError: isErrResetPassword,
-			isSuccess: isResetSuccess,
-		},
+		{ isLoading: isResetLoading, isSuccess: isResetSuccess },
 	] = useResetPasswordMutation();
 	const router = useRouter();
 	const {
@@ -52,11 +51,13 @@ export const useEmailRP = () => {
 	useEffect(() => {
 		if (isResetSuccess) {
 			setSendEmailRP(true);
+			setIsValidCP(true);
+			dispatch(setIsValidChangePassword(isValidCP));
 			dispatch(setEmailResetPassword(email));
 			dispatch(sendEmailResetPassword(sendEmailRP));
 			router.push('/auth/recovery-password/message');
 		}
-	}, [isResetSuccess, router, dispatch, sendEmailRP, email]);
+	}, [isResetSuccess, router, dispatch, sendEmailRP, email, isValidCP]);
 
 	return {
 		register,
@@ -70,12 +71,16 @@ export const useEmailRP = () => {
 //==============================================================confirm password=============================================
 
 export const useResetPass = () => {
+	const isValidChangePassword = useSelector(
+		(state) => state.auth.isValidChangePassword
+	);
 	const [changePassword, { data, isLoading, isError, isSuccess, error }] =
 		useChangePasswordMutation();
 
 	const tokenResetPassword = useSelector(
 		(state) => state.auth.tokenResetPassword
 	);
+
 	const [showPassword, setShowPassword] = useState(false);
 	const router = useRouter();
 	const {
@@ -110,8 +115,10 @@ export const useResetPass = () => {
 	useEffect(() => {
 		if (isSuccess) {
 			reset();
-			success('Password changed successfully');
-			router.push('/auth/login');
+			success('🤩 Password changed successfully');
+			setTimeout(() => {
+				router.push('/auth/login');
+			}, 3500);
 			return;
 		}
 		if (isError) {
@@ -119,7 +126,10 @@ export const useResetPass = () => {
 			warning("Password can't be changed");
 			return;
 		}
-	}, [isSuccess, isError, router, error, data, reset]);
+		if (isValidChangePassword === false) {
+			router.push('/auth/login');
+		}
+	}, [isSuccess, isError, router, error, data, reset, isValidChangePassword]);
 
 	return {
 		showPassword,
@@ -129,13 +139,12 @@ export const useResetPass = () => {
 		handleSubmit,
 		onSubmit,
 		isLoading,
-		tokenResetPassword,
 	};
 };
 //================================================= verify email and reset email==============================================
 export const useVerifyEmailRP = () => {
 	const router = useRouter();
-	const senEmail = useSelector((state) => state.auth.sendEmailResetPassword);
+	const sendEmail = useSelector((state) => state.auth.sendEmailResetPassword);
 
 	const email = useSelector((state) => state.auth.emailReset);
 
@@ -157,10 +166,10 @@ export const useVerifyEmailRP = () => {
 		resetPassword({ userBody: email });
 	};
 	useEffect(() => {
-		if (senEmail === false && email === '') {
+		if (sendEmail === false && email === '') {
 			router.push('/auth/login');
 		}
-	}, [senEmail, email, router]);
+	}, [sendEmail, email, router]);
 
 	return {
 		handleChange,

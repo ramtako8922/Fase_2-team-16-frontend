@@ -5,6 +5,7 @@ import { RiLockLine, RiEyeOffLine, RiEyeLine } from 'react-icons/ri';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { LoaderLogin } from '@/components/loaders/Loaders';
+import Head from 'next/head';
 const RecoveryPass = () => {
 	const {
 		showPassword,
@@ -14,12 +15,23 @@ const RecoveryPass = () => {
 		errors,
 		onSubmit,
 		register,
-		tokenResetPassword,
 	} = useResetPass();
 
 	return (
 		<>
-			<div className='min-h-screen flex items-center justify-center p-4 flex-col text-white'>
+			<Head>
+				<title>New Password</title>
+				<meta
+					name='viewport'
+					content='initial-scale=1.0, width=device-width'
+				/>
+				<link
+					rel='icon'
+					href='/login.ico'
+				/>
+			</Head>
+
+			<div className='min-h-screen overflow-y-hidden flex items-center justify-center p-4 flex-col text-white'>
 				<Image
 					src={Logo}
 					alt='Logo ZurmC'
@@ -99,10 +111,10 @@ const RecoveryPass = () => {
 						</div>
 					</form>
 				</div>
-			</div>
-			<ToastContainer limit={1} />
-			<div className='mt-5 flex justify-center items-center'>
-				{isLoading ? <LoaderLogin /> : null}
+				<ToastContainer limit={1} />
+				<div className='mt-5 flex justify-center items-center'>
+					{isLoading ? <LoaderLogin /> : null}
+				</div>
 			</div>
 		</>
 	);

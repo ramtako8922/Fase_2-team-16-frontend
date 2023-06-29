@@ -19,6 +19,7 @@ export const authSlice = createSlice({
 		tokenResetPassword: '',
 		sendEmailResetPassword: false,
 		tokenRegister: '',
+		isValidChangePassword: false,
 	},
 	reducers: {
 		setUser: (state, action) => {
@@ -44,6 +45,9 @@ export const authSlice = createSlice({
 		getTokenResetPassword: (state, action) => {
 			state.tokenResetPassword = action.payload;
 		},
+		setIsValidChangePassword: (state, action) => {
+			state.isValidChangePassword = action.payload;
+		},
 		getTokenRegister: (state, action) => {
 			state.tokenRegister = action.payload;
 		},
@@ -68,6 +72,7 @@ export const {
 	sendEmailResetPassword,
 	getIsRegsiter,
 	getEmailRegister,
+	setIsValidChangePassword,
 } = authSlice.actions;
 
 export default authSlice.reducer;

@@ -36,7 +36,7 @@ const LoginForm = () => {
 				<h1 className='text-blue-800 mb-8 text-[0.7rem]'>
 					Efficiency at Your Fingertips
 				</h1>
-				<div className='bg-white pt-4 pb-4 p-6 rounded-xl shadow-2xl w-auto lg:w-[400px]'>
+				<div className='bg-white pt-4 pb-4 p-9 rounded-xl shadow-2xl w-auto lg:w-[400px]'>
 					<h1 className='text-4xl text-center uppercase font-bold tracking-[1px] text-black mb-8'>
 						Log <span className='text-primary'>In</span>
 					</h1>
@@ -53,7 +53,7 @@ const LoginForm = () => {
 								placeholder='example@example.com'
 								{...register('email')}
 							/>
-							<p className='absolute w-full top-1/2 text-sm translate-y-[90%] left-2  text-error mt-2 mb-2 text-center'>
+							<p className='absolute w-full top-1/2 text-sm translate-y-[90%] left-2  text-error mt-2 mb-2 '>
 								{errors.email?.message}
 							</p>
 						</div>
@@ -78,7 +78,7 @@ const LoginForm = () => {
 									className='absolute top-1/2 -translate-y-1/2 right-2 hover:cursor-pointer text-primary'
 								/>
 							)}
-							<p className='absolute w-full top-1/2 text-sm translate-y-[60%] md:translate-y-[1.5rem] left-2  text-error mt-2 mb-2 text-center'>
+							<p className='absolute w-full top-1/2 text-sm translate-y-[78%] md:translate-y-[1.5rem] left-2  text-error mt-2 mb-2 '>
 								{errors.password?.message}
 							</p>
 						</div>

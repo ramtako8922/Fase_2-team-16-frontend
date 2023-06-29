@@ -3,6 +3,7 @@ import { LoaderResetPassword } from '../../../components/loaders/Loaders';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import { getTokenResetPassword } from '@/store/slices/auth';
+import Head from 'next/head';
 
 export const RecoveryPass = (props) => {
 	const router = useRouter();
@@ -21,6 +22,21 @@ export const RecoveryPass = (props) => {
 
 	return (
 		<>
+			<Head>
+				<title>Recovery Password</title>
+				<meta
+					name='description'
+					content='Recovery Password'
+				/>
+				<meta
+					name='viewport'
+					content='width=device-width, initial-scale=1'
+				/>
+				<link
+					rel='icon'
+					href='/verify.gif'
+				/>
+			</Head>
 			<div className='flex justify-center items-center w-screen h-screen flex-col'>
 				<LoaderResetPassword />
 			</div>

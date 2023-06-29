@@ -68,8 +68,8 @@ export const resetPasswordSchema = yup.object().shape({
 //========================= Register new user Validation  ================================//
 
 export const registerUserSchema = yup.object().shape({
-	firstName: yup.string().required('First Name is required '),
-	lastName: yup.string().required('Last name is required '),
+	firstName: yup.string().required('first Name is required '),
+	lastName: yup.string().required('last name is required '),
 	email: yup
 		.string()
 		.email('email is not valid')
