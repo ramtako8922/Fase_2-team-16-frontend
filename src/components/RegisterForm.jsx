@@ -38,7 +38,7 @@ const Register = () => {
 				<h1 className='text-cyan-950  mb-4 text-[0.7rem]'>
 					Efficiency at Your Fingertips
 				</h1>
-				<div className='bg-white p-5 rounded-xl shadow-2xl w-[400px]'>
+				<div className='bg-white p-5 rounded-xl shadow-2xl w-[350px]'>
 					<h1
 						className='text-xl text-center uppercase font-bold tracking-[1px] text-black fon
                 mb-4'>
