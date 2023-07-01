@@ -6,6 +6,7 @@ import { modalSlice } from './slices/dashboard';
 import {  ProductsSlice } from './slices/products/ProductsSlice.js';
 import { apiSlice } from './slices/apis/apiSlice';
 import { registerSlice } from './slices/auth/register';
+import {CategorySlice} from './slices/categories/categoriesSlice.js';
 export const store = configureStore({
 	reducer: {
 		// Add the generated reducer as a specific top-level slice
@@ -16,6 +17,7 @@ export const store = configureStore({
 		ui: uiSlice.reducer,
 		modal: modalSlice.reducer,
 		newProduct: ProductsSlice.reducer,
+		newCategory:CategorySlice.reducer
 		
 	},
 	middleware: (getDefaultMiddleware) =>

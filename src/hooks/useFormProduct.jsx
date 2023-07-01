@@ -43,23 +43,22 @@ function useFormProduct() {
 		});
 	};
 
-	const onSubmit=  (data) => {
-		
-		console.log("prueba")
+	const onSubmit=  (e) => {
 
-		// const { nameproduct, description,stoock, price, quantity,category } = e.target;
-		// console.log("e",e)
-		// const product = {
-		// 	id: uuid(),
-		// 	name: nameproduct.value,
-		// 	description: description.value,
-        //     stoock:stoock.value,
-		// 	price: price.value,
-		// 	quantity: quantity.value,
-        //     category:category.value 
-		// };
-        //  console.log(product)
-		// createProduct(product);
+
+		const { nameproduct, description,stoock, price, quantity,category } = e
+		console.log("e",e)
+		const product = {
+			id: uuid(),
+			name: nameproduct,
+			description: description,
+            stoock:stoock,
+			price: price,
+			quantity: quantity,
+            category:category 
+		};
+         console.log(product)
+		createProduct(product);
 		reset()
 	};
 

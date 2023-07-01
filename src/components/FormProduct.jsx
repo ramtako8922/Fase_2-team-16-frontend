@@ -30,7 +30,7 @@ const FormProduct = () => {
 							name='nameproduct'
 							{...register('nameproduct')}
 						/>
-						<p className='absolute w-full top-1/2 text-sm translate-y-[90%] left-2  text-error mt-2 mb-2 '>
+						<p className='text-error text-red-500 '>
 								{errors.nameproduct?.message}
 							</p>
 					</div>
@@ -43,16 +43,17 @@ const FormProduct = () => {
 							name='description'
 							{...register('description')}
 						/>
-						<p className='absolute w-full top-1/2 text-sm translate-y-[90%] left-2  text-error mt-2 mb-2 '>
+						<p className='absolute w-full top-1/2 text-sm translate-y-[90%] left-2  text-error mt-2 mb-2 text-red-500 '>
 								{errors.description?.message}
 							</p>
 					</div>
 					<div className='relative mb-4'>
 						<MdConfirmationNumber className='absolute top-1/2 -translate-y-1/2 left-2 text-white' />
 						<select name='stoock'
+						defaultValue={"si"}
 						        {...register('stoock')}
 							className='py-3 pl-8 pr-4 bg-input_auth w-80 focus:bg-input_auth outline-none rounded-lg text-gray-400'>
-							<option value='' selected>Stoock State</option>
+							<option value='si' >Stoock State</option>
 							<option value='si'>Yes</option>
 							<option value='no'>No</option>
 							
@@ -90,9 +91,10 @@ const FormProduct = () => {
 					<div className='relative mb-8'>
 						<RiArchiveDrawerFill className='absolute top-1/2 -translate-y-1/2 left-2 text-white' />
 						<select name='category'
+						defaultValue={"volvo"}
 						     {...register('category')}
 							className='py-3 pl-8 pr-4 bg-input_auth w-80 focus:bg-input_auth outline-none rounded-lg text-gray-400'>
-							<option value='' selected>Select Category</option>
+							<option value='' >Select Category</option>
 							<option value='volvo'>Game</option>
 							<option value='saab'>Toys</option>
 							<option valhaue='opel'>Keyboard</option>
