@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "back": "json-server --watch db/products.json --port 4000"
+    "back": "json-server --watch db/products.json --port 4000",
+    "back2": "json-server --watch db/categories.json --port 4000"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.14",

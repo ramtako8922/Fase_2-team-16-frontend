@@ -1,7 +1,7 @@
 
 import { createSlice } from '@reduxjs/toolkit';
 const initialState={
-    name: '',
+    namecategory: '',
     description: ''
    
 
@@ -14,7 +14,7 @@ initialState:initialState,
 
 reducers: {
     addcategory: (state, action) => {
-        state.name=action.payload
+        state.namecategory=action.payload
         state.description=action.payload
 
     }

@@ -47,6 +47,16 @@ export const apiSlice = createApi({
 				}
             },
 		}),
+
+		createCategory:builder.mutation({
+            query:(newCategory)=>{
+				return{
+                url:"/categories",
+                method:"POST",
+                body:newCategory
+				}
+            },
+		}),
 		getUser: builder.query({
 			query: () => {
 				return {
@@ -107,5 +117,6 @@ export const {
 	useGetUserQuery,
 	useGetRefreshTokenMutation,
 	useGetProductsQuery,
-	useCreateProductMutation
+	useCreateProductMutation,
+	useCreateCategoryMutation
 } = apiSlice;
