@@ -15,8 +15,6 @@ const DashboardLayout = ({ children }) => {
 	const { data, isLoading, isSuccess } = useGetUserQuery(undefined, {
 		refetchOnMountOrArgChange: true,
 	});
-	console.log(data);
-
 	useEffect(() => {
 		if (getToken() && isSuccess) {
 			dispatch(setUser(data));
