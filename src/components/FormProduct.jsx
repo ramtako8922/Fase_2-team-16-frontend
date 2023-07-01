@@ -10,7 +10,7 @@ import useFormProduct from '@/hooks/useFormProduct';
 
 
 const FormProduct = () => {
-	const { handlerChange, handlerSubmit,handleSubmit,errors, register } = useFormProduct();
+	const { handlerChange, onSubmit,handleSubmit,errors, register } = useFormProduct();
 
 	return (
 		<div className=' h-full  mt-10 flex items-center justify-center p-4 flex-col text-white'>
@@ -20,7 +20,7 @@ const FormProduct = () => {
 				</h1>
 				<form
 					className='mb-8'
-					onSubmit={handleSubmit(handlerSubmit)}>
+					onSubmit={handleSubmit(onSubmit)}>
 					<div className='relative mb-4'>
 						<BsFillBoxFill className='absolute top-1/2 -translate-y-1/2 left-2 text-white' />
 						<input

@@ -11,6 +11,7 @@ import { useForm } from 'react-hook-form';
 import { ProductSchema } from '@/validations/ValidationProductForm';
 import { yupResolver } from '@hookform/resolvers/yup';
 import *as youp from 'yup';
+import { data } from 'autoprefixer';
 
 function useFormProduct() {
 
@@ -21,7 +22,7 @@ function useFormProduct() {
 		formState: { errors },
 	} = useForm({
 		defaultValues: {
-			productname: '',
+			nameproduct: '',
 			description: '',
 			stoock: '',
 			price: '',
@@ -42,29 +43,29 @@ function useFormProduct() {
 		});
 	};
 
-	const handlerSubmit= async (e) => {
-		e.preventDefault();
-		console.log("e",e)
+	const onSubmit=  (data) => {
+		
+		console.log("prueba")
 
-		const { nameproduct, description,stoock, price, quantity,category } = e.target;
-		console.log("e",e)
-		const product = {
-			id: uuid(),
-			name: nameproduct.value,
-			description: description.value,
-            stoock:stoock.value,
-			price: price.value,
-			quantity: quantity.value,
-            category:category.value 
-		};
-         console.log(product)
-		createProduct(product);
+		// const { nameproduct, description,stoock, price, quantity,category } = e.target;
+		// console.log("e",e)
+		// const product = {
+		// 	id: uuid(),
+		// 	name: nameproduct.value,
+		// 	description: description.value,
+        //     stoock:stoock.value,
+		// 	price: price.value,
+		// 	quantity: quantity.value,
+        //     category:category.value 
+		// };
+        //  console.log(product)
+		// createProduct(product);
 		reset()
 	};
 
 	return {
-		handlerChange,
-		handlerSubmit,
+		
+		onSubmit,
 		createProduct,
 		errors,
 		register,
