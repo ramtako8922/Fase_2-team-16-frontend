@@ -49,9 +49,7 @@ export const useEmailRP = () => {
 	console.log(isValidCP);
 	useEffect(() => {
 		if (isResetSuccess) {
-			setSendEmailRP(true);
 			dispatch(setEmailResetPassword(email));
-			dispatch(sendEmailResetPassword(sendEmailRP));
 			router.push('/auth/recovery-password/message');
 		}
 	}, [isResetSuccess, router, dispatch, sendEmailRP, email]);
