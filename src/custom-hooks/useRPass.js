@@ -46,7 +46,7 @@ export const useEmailRP = () => {
 			return;
 		}
 	};
-	console.log(isValidCP);
+
 	useEffect(() => {
 		if (isResetSuccess) {
 			dispatch(setEmailResetPassword(email));
