@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { set, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { warning, success } from '@/components/notifications/toaster-auth';
 import { useChangePasswordMutation } from '@/store/slices/apis';
@@ -12,7 +12,6 @@ import { useDispatch } from 'react-redux';
 import {
 	setEmailResetPassword,
 	sendEmailResetPassword,
-	setIsValidChangePassword,
 } from '@/store/slices/auth';
 
 import { forgotPasswordSchema } from '@/validations/UserValidation';
@@ -22,7 +21,6 @@ export const useEmailRP = () => {
 	const dispatch = useDispatch();
 	const [sendEmailRP, setSendEmailRP] = useState(false);
 	const [email, setEmail] = useState('');
-	const [isValidCP, setIsValidCP] = useState(false);
 	const [
 		resetPassword,
 		{ isLoading: isResetLoading, isSuccess: isResetSuccess },
@@ -48,16 +46,15 @@ export const useEmailRP = () => {
 			return;
 		}
 	};
+	console.log(isValidCP);
 	useEffect(() => {
 		if (isResetSuccess) {
 			setSendEmailRP(true);
-			setIsValidCP(true);
-			dispatch(setIsValidChangePassword(isValidCP));
 			dispatch(setEmailResetPassword(email));
 			dispatch(sendEmailResetPassword(sendEmailRP));
 			router.push('/auth/recovery-password/message');
 		}
-	}, [isResetSuccess, router, dispatch, sendEmailRP, email, isValidCP]);
+	}, [isResetSuccess, router, dispatch, sendEmailRP, email]);
 
 	return {
 		register,
@@ -74,6 +71,7 @@ export const useResetPass = () => {
 	const isValidChangePassword = useSelector(
 		(state) => state.auth.isValidChangePassword
 	);
+
 	const [changePassword, { data, isLoading, isError, isSuccess, error }] =
 		useChangePasswordMutation();
 

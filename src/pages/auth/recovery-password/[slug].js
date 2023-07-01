@@ -1,24 +1,28 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { LoaderResetPassword } from '../../../components/loaders/Loaders';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import { getTokenResetPassword } from '@/store/slices/auth';
 import Head from 'next/head';
-
+import { setIsValidChangePassword } from '@/store/slices/auth';
 export const RecoveryPass = (props) => {
 	const router = useRouter();
 	const validityChange = props.validity.message;
 	const token = props.slug;
 	const dispatch = useDispatch();
+	const [isValidCP, setIsValidCP] = useState(false);
 
 	useEffect(() => {
 		if (validityChange === 'The entered token is valid') {
 			dispatch(getTokenResetPassword(token));
+			setIsValidCP(true);
+			dispatch(setIsValidChangePassword(isValidCP));
+
 			router.push('/auth/recovery-password/newpass');
 		} else {
 			router.push('/auth/login');
 		}
-	}, [validityChange, dispatch, token, router]);
+	}, [validityChange, dispatch, token, router, isValidCP]);
 
 	return (
 		<>

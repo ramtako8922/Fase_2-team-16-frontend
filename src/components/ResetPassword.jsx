@@ -29,7 +29,7 @@ const ResetPassword = () => {
 				<h1 className='text-blue-800 mb-8 text-[0.7rem]'>
 					Efficiency at Your Fingertips
 				</h1>
-				<div className='bg-white p-8 rounded-xl shadow-2xl w-[370px] '>
+				<div className='bg-white p-8 rounded-xl shadow-2xl w-[350px] '>
 					<h1 className='text-3xl text-center uppercase font-bold tracking-[3px] text-black '>
 						Password
 					</h1>

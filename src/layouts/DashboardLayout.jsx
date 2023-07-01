@@ -41,8 +41,8 @@ const DashboardLayout = ({ children }) => {
 				/>
 			</Head>
 
-			<div className='flex overflow-x-hidden'>
-				<div className='bg-blue-700 h-screen'>
+			<div className='flex overflow-x-hidden min-h-screen'>
+				<div className='bg-slate-800 '>
 					<Sidebar />
 				</div>
 				<div className='w-full'>

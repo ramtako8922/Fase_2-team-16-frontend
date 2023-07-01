@@ -36,7 +36,7 @@ const LoginForm = () => {
 				<h1 className='text-blue-800 mb-8 text-[0.7rem]'>
 					Efficiency at Your Fingertips
 				</h1>
-				<div className='bg-white pt-4 pb-4 p-9 rounded-xl shadow-2xl w-auto lg:w-[400px]'>
+				<div className='bg-white pt-4 pb-4 p-9 rounded-xl shadow-2xl w-[350px]'>
 					<h1 className='text-4xl text-center uppercase font-bold tracking-[1px] text-black mb-8'>
 						Log <span className='text-primary'>In</span>
 					</h1>
