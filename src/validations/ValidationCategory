@@ -7,6 +7,7 @@ export const  ProductSchema = youp.object().shape({
   name:youp.
   string().
   required("the field is required"),
+  Match("^[^0-9][A-Z].*")
 
     //---------------------------description category Validations---------------------//
   description:youp.
