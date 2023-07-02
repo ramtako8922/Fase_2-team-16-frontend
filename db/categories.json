@@ -16,6 +16,11 @@
       "id": "de7b3f16-f49b-4116-aa50-c8a5171a9c84",
       "namecategry": "Camaras",
       "description": "Esta categoría contiene productos de cámaras de vídeo"
+    },
+    {
+      "id": "c3513898-94d5-4cd2-a3b8-cc94c8192716",
+      "namecategry": "Neveras",
+      "description": "Esta categoría almacena los productos de Tipo neveras"
     }
   ]
 }

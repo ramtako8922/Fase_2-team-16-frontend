@@ -8,6 +8,9 @@ import { v4 as uuid } from 'uuid';
 import { useCreateCategoryMutation } from '@/store/slices/apis';
 import { useState } from 'react';
 import {initialState} from '@/store/slices/categories/categoriesSlice'
+import { Toast } from 'react-toastify/dist/components';
+import { success } from '@/components/notifications/toastify-categories';
+
 
 
 function useFormCategory() {
@@ -42,6 +45,8 @@ function useFormCategory() {
 			description: description,
              
 		};
+        success()
+
          console.log(category)
 		createCategory(category);
 		reset()
