@@ -6,9 +6,8 @@ import { CategorySchema } from '@/validations/ValidationCategoryForm.js';
 import { useDispatch } from 'react-redux';
 import { v4 as uuid } from 'uuid';
 import { useCreateCategoryMutation } from '@/store/slices/apis';
-import { useState } from 'react';
+import { useState,  useEffect} from 'react';
 import {addcategory, initialState} from '@/store/slices/categories/categoriesSlice'
-import { Toast } from 'react-toastify/dist/components';
 import { success,errorRequest } from '@/components/notifications/toastify-categories';
 
 
@@ -55,11 +54,8 @@ function useFormCategory() {
          console.log(category)
 		createCategory(category);
 		reset()
-	};
-
-    useEffect(() => {
 		if (registerSuccess) {
-			success('register category successfully');
+			success("Category added succesfully")
 			dispatch(addcategory(category));
 			
 		} else {
@@ -67,7 +63,20 @@ function useFormCategory() {
 				errorRequest(registerError.data.message);
 			}
 		}
-	}, [registerSuccess,  registerError, dispatch, category]);
+		
+	};
+
+    // useEffect(() => {
+	// 	if (registerSuccess) {
+			
+	// 		dispatch(addcategory(category));
+			
+	// 	} else {
+	// 		if (registerError && registerError.data) {
+	// 			errorRequest(registerError.data.message);
+	// 		}
+	// 	}
+	// }, [registerSuccess,  registerError, dispatch]);
 
 
   return {
