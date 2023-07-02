@@ -9,6 +9,8 @@ import { useCreateCategoryMutation } from '@/store/slices/apis';
 import { useState,  useEffect} from 'react';
 import {addcategory, initialState} from '@/store/slices/categories/categoriesSlice'
 import { success,errorRequest } from '@/components/notifications/toastify-categories';
+import { nanoid } from '@reduxjs/toolkit';
+
 
 
 
@@ -30,7 +32,7 @@ function useFormCategory() {
 	const [form,setForm]=useState(initialState)
 	const dispatch = useDispatch();
 	const [createCategory,{ 
-
+     data:registerCategoryData,
     isSuccess:registerSuccess,
     error: registerError
 
@@ -54,8 +56,22 @@ function useFormCategory() {
          console.log(category)
 		createCategory(category);
 		reset()
+		
+		
+	};
+
+    useEffect(() => {
+		const{namecategory,description}=registerCategoryData
+		const category={
+			namecategory:namecategory,
+			description:description
+		}
 		if (registerSuccess) {
-			success("Category added succesfully")
+
+           
+
+			success("Category register succefully")
+			
 			dispatch(addcategory(category));
 			
 		} else {
@@ -63,20 +79,7 @@ function useFormCategory() {
 				errorRequest(registerError.data.message);
 			}
 		}
-		
-	};
-
-    // useEffect(() => {
-	// 	if (registerSuccess) {
-			
-	// 		dispatch(addcategory(category));
-			
-	// 	} else {
-	// 		if (registerError && registerError.data) {
-	// 			errorRequest(registerError.data.message);
-	// 		}
-	// 	}
-	// }, [registerSuccess,  registerError, dispatch]);
+	}, [registerSuccess,  registerError, dispatch,category]);
 
 
   return {
