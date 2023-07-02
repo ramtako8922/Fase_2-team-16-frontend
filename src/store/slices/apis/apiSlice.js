@@ -38,15 +38,15 @@ export const apiSlice = createApi({
 			// },
 		}),
 
-		createProduct:builder.mutation({
-            query:(newProduct)=>{
-				return{
-                url:"/products",
-                method:"POST",
-                body:newProduct
-				}
-            },
-		}),
+		// createProduct:builder.mutation({
+        //     query:(newProduct)=>{
+		// 		return{
+        //         url:"/products",
+        //         method:"POST",
+        //         body:newProduct
+		// 		}
+        //     },
+		// }),
 
 		createCategory:builder.mutation({
             query:(newCategory)=>{

@@ -68,14 +68,20 @@ function useFormCategory() {
 
 			success("Category register succefully")
 			 setForm(true)
-			
+			console.log(success)
+			console.log("estoy haciendo use efectt")
+
 			
 		} else {
 			if (registerError && registerError.data) {
 				errorRequest(registerError.data.message);
+				onsole.log("estoy en error",errorRequest)
+
 			}
 		}
 	}, [registerSuccess,  registerError]);
+
+	console.log(registerSuccess)
 
 
   return {

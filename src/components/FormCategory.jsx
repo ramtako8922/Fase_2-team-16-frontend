@@ -35,9 +35,9 @@ function FormCategory() {
             REGISTER
             </button>
         </form>
-        <ToastContainer limit={1} />
+      
       </div>
-     
+      <ToastContainer limit={1} />
     </div>
     
   )
