@@ -9,7 +9,7 @@ import { useCreateCategoryMutation } from '@/store/slices/apis';
 import { useState,  useEffect} from 'react';
 import {addcategory, initialState} from '@/store/slices/categories/categoriesSlice'
 import { success,errorRequest } from '@/components/notifications/toastify-categories';
-import { nanoid } from '@reduxjs/toolkit';
+
 
 
 
@@ -61,25 +61,21 @@ function useFormCategory() {
 	};
 
     useEffect(() => {
-		const{namecategory,description}=registerCategoryData
-		const category={
-			namecategory:namecategory,
-			description:description
-		}
+		
 		if (registerSuccess) {
 
            
 
 			success("Category register succefully")
+			 setForm(true)
 			
-			dispatch(addcategory(category));
 			
 		} else {
 			if (registerError && registerError.data) {
 				errorRequest(registerError.data.message);
 			}
 		}
-	}, [registerSuccess,  registerError, dispatch,category]);
+	}, [registerSuccess,  registerError]);
 
 
   return {

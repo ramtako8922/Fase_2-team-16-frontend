@@ -28,15 +28,16 @@ function FormCategory() {
            {...register('description')}
            />
             <span className='text-red-500'>{errors.description?.message}</span>
-            <input 
+            < button
             type='submit'
             className=' bg-purple-500 hover:bg-purple-600 mt-5 h-12 font-medium text-white'
-            
+            >
             REGISTER
-           />
+            </button>
         </form>
+        <ToastContainer limit={1} />
       </div>
-      <ToastContainer limit={1} />
+     
     </div>
     
   )
