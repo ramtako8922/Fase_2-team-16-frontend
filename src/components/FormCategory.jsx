@@ -1,6 +1,7 @@
 
 import React from 'react'
 import useFormCategory from '@/hooks/useFormCategory'
+import { ToastContainer } from 'react-toastify';
 
 function FormCategory() {
     const{handleSubmit, onSubmit, errors,register}=useFormCategory();
@@ -35,7 +36,9 @@ function FormCategory() {
            />
         </form>
       </div>
+      <ToastContainer limit={1} />
     </div>
+    
   )
 }
 
