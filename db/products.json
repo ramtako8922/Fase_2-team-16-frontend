@@ -1,0 +1,104 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "nameproduct": "John",
+      "description": "Doe",
+      "stoock": "yes",
+      "price": "345",
+      "quantity": "6",
+      "category": "bol"
+    },
+    {
+      "id": 2,
+      "nameproduct": "John",
+      "description": "Doe",
+      "stoock": "yes",
+      "price": "345",
+      "quantity": "6",
+      "category": "bol"
+    },
+    {
+      "id": "4ee8cfd7-dadb-4bf5-ab85-d1cb288e035c",
+      "name": "ff",
+      "description": "ddd",
+      "price": "dddd",
+      "quantity": "r"
+    },
+    {
+      "id": "63d7f809-2e70-4089-94a0-cee804dd1ca7",
+      "name": "ff",
+      "description": "ddd",
+      "price": "dddd",
+      "quantity": "r"
+    },
+    {
+      "id": "9264613d-1d5d-4547-858e-88a824021a8c",
+      "name": "ff",
+      "description": "dddd",
+      "price": "ddd",
+      "quantity": "rrr"
+    },
+    {
+      "id": "5ca8aa22-6020-4363-929a-79e59931338d",
+      "name": "ff",
+      "description": "dddd",
+      "price": "rrr",
+      "quantity": "6"
+    },
+    {
+      "id": "def86141-939d-4c06-8808-81e8fb21cf1a",
+      "name": "ddd",
+      "description": "ddd",
+      "stoock": "si",
+      "price": "dd",
+      "quantity": "sss",
+      "category": "audi"
+    },
+    {
+      "id": "a0d09b71-02a4-45e0-ab1d-c582990dd3b1",
+      "name": "ddd",
+      "description": "ddd",
+      "stoock": "si",
+      "price": "dd",
+      "quantity": "sss",
+      "category": "saab"
+    },
+    {
+      "id": "01431138-1835-4e66-a8b7-0f0cd4fe64ba",
+      "name": "",
+      "description": "",
+      "stoock": "",
+      "price": "",
+      "quantity": "",
+      "category": ""
+    },
+    {
+      "id": "c60413fa-536b-4243-a1b3-79ac32adbce6",
+      "name": "",
+      "description": "",
+      "stoock": "",
+      "price": "",
+      "quantity": "",
+      "category": ""
+    },
+    {
+      "id": "c235976e-96df-401d-b4e6-b399f999460c",
+      "name": "sss",
+      "description": "ddd",
+      "stoock": "si",
+      "price": "4",
+      "quantity": "",
+      "category": ""
+    },
+    {
+      "id": "70b488c2-3718-40e0-92b7-39e52761452d",
+      "name": "ddddd",
+      "description": "estas es una prueba",
+      "stoock": "si",
+      "price": "4",
+      "quantity": "6",
+      "category": "volvo"
+    }
+  ]
+}

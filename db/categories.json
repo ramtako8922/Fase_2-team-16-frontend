@@ -1,0 +1,21 @@
+{
+  "categories": [
+    {
+      "id": "0a5cdfe1-e70c-4d3f-8d4f-e63995e818da",
+      "description": "Esta categoria almacena los productos del inventario que son teléfonos móviles"
+    },
+    {
+      "id": "1552d5e3-d946-4cc8-abc1-87a2cff0dde2",
+      "description": "Esta categoria almacena los productos de la categoría de computadores"
+    },
+    {
+      "id": "b7ff1b01-c4e6-4bc4-8679-00904be9ad15",
+      "description": "Faaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    {
+      "id": "de7b3f16-f49b-4116-aa50-c8a5171a9c84",
+      "namecategry": "Camaras",
+      "description": "Esta categoría contiene productos de cámaras de vídeo"
+    }
+  ]
+}
