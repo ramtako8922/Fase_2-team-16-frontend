@@ -1,7 +1,6 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-
 //================================ Login Validation  ================================//
+
 export const loginSchema = yup.object().shape({
 	email: yup
 		.string()
