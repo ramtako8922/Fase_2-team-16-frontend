@@ -81,7 +81,7 @@ const AddProduct = () => {
 			<h1 className='font-bold md:text-lg '>Register New Product</h1>
 
 			<hr className=' bg-blue-950  ml-0 mt-4 mb-4' />
-			<div className='w-full border border-solid border-gray-300 shadow-sm rounded-md  '>
+			<div className='w-full border border-solid border-gray-300 shadow-sm rounded-md lg:w-[700px] '>
 				<h2 className=' text-center p-4 font-extrabold uppercase'>
 					Add Product
 				</h2>

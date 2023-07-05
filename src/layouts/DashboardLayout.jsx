@@ -40,7 +40,7 @@ const DashboardLayout = ({ children }) => {
 			</Head>
 
 			<div className='flex overflow-x-hidden min-h-screen'>
-				<div className='bg-slate-800 '>
+				<div className='bg-blue-700 '>
 					<Sidebar />
 				</div>
 				<div className='w-full'>
