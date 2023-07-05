@@ -9,7 +9,7 @@ const validateToken = async (request) => {
 
 	try {
 		// Haces una solicitud al endpoint para validar el token
-		const response = await fetch('https://api-trycatch-test.fly.dev/api/me', {
+		const response = await fetch('https://api-inventario.fly.dev/api/me', {
 			headers: {
 				Authorization: token.value,
 			},
