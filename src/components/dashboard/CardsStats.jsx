@@ -45,12 +45,12 @@ const Data = [
 
 const CardsStats = () => {
 	return (
-		<div className='flex justify-between gap-2 items-center p-5  '>
+		<div className='flex flex-wrap lg:flex-nowrap gap-2 justify-center items-center lg:p-5 p-2 '>
 			{Data.map((item) => {
 				return (
 					<div
 						key={item.id}
-						className={`bg-green-400 hover:bg-blue-700 hover:text-white text-gray-900 flex justify-between  w-1/4 rounded-md border-spacing-2 border-black shadow-md  p-3`}>
+						className={`w-auto h-36 bg-blue-700 hover:bg-red-700 hover:text-white text-gray-900 flex justify-between  lg:w-1/4 rounded-md border-spacing-2 border-black shadow-md transform active:scale-x-0 transition-transform `}>
 						<div
 							className={` mt-2 w-1/2  flex justify-center items-center  flex-col `}>
 							<div
@@ -58,19 +58,22 @@ const CardsStats = () => {
 								style={{
 									'--value': item.progress,
 									color: 'white',
-									'--size': '6rem',
-									'--thickness': '0.6rem',
+									scale: '0.6',
 								}}>
 								{item.progress}%
 							</div>
-							<div className=' justify-center flex items-center mt-2 '>
-								<p className='text-sm font-semibold uppercase'>{item.title}</p>
+							<div className=' justify-center flex items-center mt-2 text-white '>
+								<p className=' text-[0.5rem] lg:text-sm font-semibold uppercase mb-2'>
+									{item.title}
+								</p>
 							</div>
 						</div>
-						<div className='w-1/2 flex justify-between items-center  flex-col  text-sm'>
-							<div className='text-white text-3xl mt-2'>{item.icon}</div>
+						<div className='w-1/2 flex justify-between items-center  flex-col text-sm m-2'>
+							<div className='text-white text-lg lg:text-3xl mt-2'>
+								{item.icon}
+							</div>
 							<div className='text-white font-bold'>{item.total}</div>
-							<div className='text-white opacity-80 text-[0.8rem] '>
+							<div className='text-white opacity-80 text-[0.5rem] lg:text-[0.8rem] '>
 								last 24 horas
 							</div>
 						</div>

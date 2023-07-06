@@ -61,6 +61,17 @@ export const authSlice = createSlice({
 		},
 	},
 });
+export const refreshAccessToken = createSlice({
+	name: 'refreshAccessToken',
+	initialState: {
+		refreshToken: '',
+	},
+	reducers: {
+		getCredentials: (state, action) => {
+			state.refreshToken = action.payload;
+		},
+	},
+});
 
 export const {
 	getCredentials,
@@ -74,5 +85,6 @@ export const {
 	getEmailRegister,
 	setIsValidChangePassword,
 } = authSlice.actions;
+export const { getRefreshToken } = refreshAccessToken.actions;
 
 export default authSlice.reducer;

@@ -51,7 +51,7 @@ function Calendary() {
 	};
 
 	return (
-		<div className='w-auto h-auto p-5 border-spacing-1 border-black shadow-lg rounded-sm'>
+		<div className='w-auto h-auto p-5 border-spacing-1 border-black shadow-lg rounded-sm bg-white '>
 			<div className='flex items-center justify-between'>
 				<p className='font-semibold text-md'>
 					{format(firstDayOfMonth, 'MMMM yyyy')}

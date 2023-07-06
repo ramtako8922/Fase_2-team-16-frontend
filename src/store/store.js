@@ -5,12 +5,14 @@ import { uiSlice } from './slices/ui/uiSlice';
 import { modalSlice } from './slices/dashboard';
 import { newProductSlice, productSlice } from './slices/products/Products';
 import { apiSlice } from './slices/apis/apiSlice';
+import { refreshAccessToken } from './slices/auth';
 export const store = configureStore({
 	reducer: {
 		// Add the generated reducer as a specific top-level slice
 
 		[apiSlice.reducerPath]: apiSlice.reducer,
 		auth: authSlice.reducer,
+		refreshAccessToken: refreshAccessToken.reducer,
 		ui: uiSlice.reducer,
 		modal: modalSlice.reducer,
 		newProduct: newProductSlice.reducer,
@@ -18,6 +20,6 @@ export const store = configureStore({
 	},
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware().concat(apiSlice.middleware),
-	devTools: false,
+	devTools: true,
 });
 setupListeners(store.dispatch);

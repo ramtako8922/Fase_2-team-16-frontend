@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { getToken, setToken, Login_in } from '@/services/accessToken/session';
+
 export const apiSlice = createApi({
 	reducerPath: 'apiInventario',
 	baseQuery: fetchBaseQuery({
@@ -21,6 +22,7 @@ export const apiSlice = createApi({
 				return response;
 			},
 		}),
+
 		registerUser: builder.mutation({
 			query: (dataRegister) => {
 				return {
