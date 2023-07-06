@@ -33,12 +33,13 @@ var data = {
 		},
 	],
 };
-
-export default function PiesChartCategory() {
+export const PiesChartCountry = () => {
 	return (
-		<Pie
-			data={data}
-			options={options}
-		/>
+		<div>
+			<Pie
+				data={data}
+				options={options}
+			/>
+		</div>
 	);
-}
+};
