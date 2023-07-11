@@ -23,13 +23,13 @@ const AddProduct = () => {
 	const Input = ({ name, placeholder, type }) => {
 		return (
 			<>
-				<label>{name}</label>
+				<label className='capitalize'>{name}</label>
 				<input
 					type={type}
 					name={name}
 					id={name}
 					placeholder={placeholder}
-					className='border border-solid border-gray-400 p-2 rounded-md bg-gray-200'
+					className='border border-solid border-gray-400 p-2 rounded-md bg-gray-200 lg:p-1'
 					{...register(name)}
 				/>
 			</>
@@ -39,12 +39,16 @@ const AddProduct = () => {
 	const Select = ({ name, placeholder, option }) => {
 		return (
 			<>
-				<label htmlFor={name}>{name}</label>
+				<label
+					htmlFor={name}
+					className='capitalize'>
+					{name}
+				</label>
 				<select
 					id={name}
 					{...register(name)}
 					defaultValue={'Default'}
-					className='border border-solid border-gray-400 p-2 rounded-md bg-gray-200   focus:ring-blue-500 focus:border-blue-500 block w-full  box-border'>
+					className='border border-solid border-gray-400 p-2 lg:p-1 rounded-md bg-gray-200   focus:ring-blue-500 focus:border-blue-500 block w-full  box-border'>
 					<option
 						value='default'
 						disabled={true}>
@@ -62,34 +66,32 @@ const AddProduct = () => {
 		);
 	};
 
-	const Textarea = ({ name, placeholder }) => {
+	const TextArea = ({ name, placeholder }) => {
 		return (
 			<>
-				<label>{name}</label>
+				<label className='capitalize'>{name}</label>
 				<textarea
 					name={name}
 					id={name}
 					placeholder={placeholder}
-					className='h-32 border border-solid border-gray-400 p-2 rounded-md bg-gray-200 resize-none'
+					className='h-32 lg:h-28 border border-solid border-gray-400 p-2 rounded-md bg-gray-200 resize-none'
 					{...register(name)}></textarea>
 			</>
 		);
 	};
 
 	return (
-		<div className='mb-4 flex justify-center items-center flex-col'>
-			<h1 className='font-bold md:text-lg '>Register New Product</h1>
-
+		<div className='mb-1 flex justify-center items-center flex-col'>
 			<hr className=' bg-blue-950  ml-0 mt-4 mb-4' />
-			<div className='w-full border border-solid border-gray-300 shadow-sm rounded-md lg:w-[700px] '>
-				<h2 className=' text-center p-4 font-extrabold uppercase'>
-					Add Product
+			<div className='w-full border border-solid border-gray-200 shadow-xl rounded-md lg:w-[80%] '>
+				<h2 className=' text-center p-4 lg:mt-2 font-extrabold uppercase lg:text-base'>
+					Add New Product
 				</h2>
 				<form
 					onSubmit={handleSubmit(onSubmit)}
-					className='flex flex-col p-4 '>
+					className='flex flex-col p-4 lg:p-2 lg:pl-5 lg:pr-5'>
 					<div className='md:grid gap-4  grid-cols-2'>
-						<div className='flex flex-col gap-2'>
+						<div className='flex flex-col gap-2 lg:gap-1'>
 							<Input
 								name='name'
 								placeholder='Product Name'
@@ -116,8 +118,8 @@ const AddProduct = () => {
 								option={['category 1', 'category 2', 'category 3']}
 							/>
 						</div>
-						<div className='flex flex-col gap-2'>
-							<div className='flex flex-col gap-2'>
+						<div className='flex flex-col gap-2 lg:gap-1'>
+							<div className='flex flex-col gap-2 lg:gap-1'>
 								<label htmlFor='image'>Image</label>
 								<input
 									type='file'
@@ -125,13 +127,13 @@ const AddProduct = () => {
 									id='image'
 									placeholder='Image'
 									{...register('image')}
-									className='border border-solid border-gray-400 p-2 rounded-md bg-gray-200'
+									className='border border-solid border-gray-400 p-2 lg:p-0 rounded-md bg-gray-200'
 									onChange={handleImageChange}
 								/>
 							</div>
-							<div className='w-full flex justify-center items-center'>
+							<div className='w-full flex justify-center items-center '>
 								<Image
-									className='w-auto h-auto mt-2 md:h-[20rem] lg:w-auto'
+									className='w-auto h-auto mt-2 md:h-[20rem] lg:w-auto lg:h-[17rem]'
 									src={image ? image : notImage}
 									alt='Product Image'
 									width={300}
@@ -140,8 +142,8 @@ const AddProduct = () => {
 							</div>
 						</div>
 					</div>
-					<div className='flex flex-col gap-2 mt-2 md:w-full'>
-						<Textarea
+					<div className='flex flex-col gap-2 lg:gap-1 mt-2 md:w-full'>
+						<TextArea
 							name='description'
 							placeholder='Description'
 						/>

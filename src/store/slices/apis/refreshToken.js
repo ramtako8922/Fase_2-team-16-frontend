@@ -7,7 +7,6 @@ const baseQuery = fetchBaseQuery({
 
 const baseQueryWhithReauth = async (args, api, extraOptions) => {
 	const result = await baseQuery(args, api, extraOptions);
-	console.log(result);
 
 	if (result.error.status === 401 && result.error) {
 		const refreshResult = await api.fetchBaseQuery(

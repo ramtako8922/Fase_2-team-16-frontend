@@ -72,7 +72,6 @@ export const useLoginUser = () => {
 				case 401:
 					errorRequest(error.data?.message);
 					if (error.data.message === 'Please verify your email address') {
-						console.log('envian el correo');
 						info(
 							'📧 Verify your email. We have sent a verification email. Check your spam folder. Thank you!'
 						);

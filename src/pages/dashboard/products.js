@@ -15,8 +15,6 @@ const dashboard = () => {
 					href='/login.ico'
 				/>
 			</Head>
-
-			<div className='w-full'></div>
 		</DashboardLayout>
 	);
 };

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
+import Logo from '../../public/logo-2.svg';
+import Image from 'next/image';
 // =============================Icons=====================================
 import {
 	RiBarChart2Line,
@@ -23,14 +25,19 @@ const Sidebar = () => {
 	return (
 		<>
 			<div
-				className={`  bg-[#333] text-white overflow-y-hidden fixed lg:static  xl:w-auto min-h-screen lg:h-auto top-0 bg-secondary-100 p-4 flex flex-col justify-between z-50 ${
+				className={`  bg-blue-800 text-white h-full overflow-y-hidden fixed lg:static  xl:w-auto min-h-screen lg:h-auto top-0 bg-secondary-100 p-4 flex flex-col justify-between z-50 ${
 					showMenu ? 'left-0' : '-left-full'
 				} transition-all`}>
 				<div>
-					<h1 className='text-center text-xl font-bold text-white mb-10'>
-						{result}
-						<span className='text-white text-5xl'>.</span>
-					</h1>
+					<h1 className='text-center text-xl font-bold text-white mb-10'></h1>
+					<div className='w-[10rem] flex justify-center items-center mb-4'>
+						<Image
+							src={Logo}
+							alt='logo'
+							width={100}
+							height={100}
+						/>
+					</div>
 					<ul>
 						<li>
 							<Link
@@ -61,22 +68,22 @@ const Sidebar = () => {
 								<li>
 									<Link
 										href='/dashboard/product/add'
-										className='py-2 px-4 border-l border-gray-500 ml-6 block relative before:w-3 before:h-3 before:absolute before:bg-primary before:rounded-full before:-left-[6.5px] before:top-1/2 before:-translate-y-1/2 before:border-4 before:border-secondary-100 hover:bg-primary hover:rounded-2xl hover:shadow-lg hover:text-black transform active:scale-x-75 transition-transform'>
-										Add
+										className='py-2 px-4 border-l border-gray-500 ml-6 block relative before:w-3 before:h-3 before:absolute before:bg-primary before:rounded-full before:-left-[6.5px] before:top-1/2 before:-translate-y-1/2 before:border-4 before:border-secondary-100 hover:bg-primary hover:rounded-2xl hover:shadow-lg hover:text-black transform active:scale-x-75 transition-transform text-sm'>
+										Add Products
+									</Link>
+								</li>
+								<li>
+									<Link
+										href='/dashboard/product/ProductsDashboard'
+										className='py-2 px-4 border-l border-gray-500 ml-6 block relative before:w-3 before:h-3 before:absolute before:bg-gray-500 before:rounded-full before:-left-[6.5px] before:top-1/2 before:-translate-y-1/2 before:border-4 before:border-secondary-100 hover:bg-primary hover:rounded-2xl hover:shadow-lg hover:text-black transform active:scale-x-75 transition-transform text-sm'>
+										All Products
 									</Link>
 								</li>
 								<li>
 									<Link
 										href='#'
-										className='py-2 px-4 border-l border-gray-500 ml-6 block relative before:w-3 before:h-3 before:absolute before:bg-gray-500 before:rounded-full before:-left-[6.5px] before:top-1/2 before:-translate-y-1/2 before:border-4 before:border-secondary-100 hover:bg-primary hover:rounded-2xl hover:shadow-lg hover:text-black transform active:scale-x-75 transition-transform'>
-										Delete
-									</Link>
-								</li>
-								<li>
-									<Link
-										href='#'
-										className='py-2 px-4 border-l border-gray-500 ml-6 block relative before:w-3 before:h-3 before:absolute before:bg-gray-500 before:rounded-full before:-left-[6.5px] before:top-1/2 before:-translate-y-1/2 before:border-4 before:border-secondary-100  hover:bg-primary hover:rounded-2xl hover:shadow-lg hover:text-black transform active:scale-x-75 transition-transform'>
-										Edit
+										className='py-2 px-4 border-l border-gray-500 ml-6 block relative before:w-3 before:h-3 before:absolute before:bg-gray-500 before:rounded-full before:-left-[6.5px] before:top-1/2 before:-translate-y-1/2 before:border-4 before:border-secondary-100  hover:bg-primary hover:rounded-2xl hover:shadow-lg hover:text-black transform active:scale-x-75 transition-transform text-sm'>
+										Add Categories
 									</Link>
 								</li>
 							</ul>
@@ -84,8 +91,9 @@ const Sidebar = () => {
 						<li>
 							<Link
 								href='#'
-								className='flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary hover:shadow-lg hover:text-black transform active:scale-x-75 transition-transform'>
-								<RiCustomerService2Line className='text-white' /> Tickets
+								className='flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary hover:shadow-lg hover:text-black transform active:scale-x-75 transition-transform '>
+								<RiCustomerService2Line className='text-white ' />
+								Tickets
 							</Link>
 						</li>
 						<li>
