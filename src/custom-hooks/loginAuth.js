@@ -79,6 +79,9 @@ export const useLoginUser = () => {
 						return;
 					}
 					break;
+				case 403:
+					errorRequest(error.data.errors[0].msg + error.data.errors[1].msg);
+					break;
 				case 404:
 					errorRequest('⚠️ User not exist ');
 					break;

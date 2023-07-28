@@ -6,6 +6,8 @@ export const apiSlice = createApi({
 	baseQuery: fetchBaseQuery({
 		baseUrl: 'https://api-inventario.fly.dev',
 	}),
+	tagTypes: ['Products'],
+	tagTypes: ['Categories'],
 	endpoints: (builder) => ({
 		loginUser: builder.mutation({
 			query: (dataLogin) => {
@@ -73,6 +75,101 @@ export const apiSlice = createApi({
 				};
 			},
 		}),
+		getProducts: builder.query({
+			query: () => {
+				return {
+					url: '/api/products',
+					headers: {
+						Authorization: `${getToken()}`,
+					},
+				};
+			},
+			providesTags: ['Products'],
+		}),
+		setProduct: builder.mutation({
+			query: (dataProduct) => {
+				return {
+					url: '/api/product',
+					method: 'POST',
+					body: dataProduct,
+					headers: {
+						Authorization: `${getToken()}`,
+					},
+				};
+			},
+			invalidatesTags: ['Products'],
+		}),
+		updateProduct: builder.mutation({
+			query: (dataProduct) => {
+				return {
+					url: '/api/product',
+					method: 'PUT',
+					body: dataProduct,
+					headers: {
+						Authorization: `${getToken()}`,
+					},
+				};
+			},
+		}),
+		getCategory: builder.query({
+			query: () => {
+				return {
+					url: '/api/categories',
+					headers: {
+						Authorization: `${getToken()}`,
+					},
+				};
+			},
+			providesTags: ['Categories'],
+		}),
+		addCategory: builder.mutation({
+			query: (dataCategory) => {
+				return {
+					url: '/api/category',
+					method: 'POST',
+					body: dataCategory,
+					headers: {
+						Authorization: `${getToken()}`,
+					},
+				};
+			},
+			invalidatesTags: ['Categories'],
+		}),
+		deleteCategory: builder.mutation({
+			query: (id) => {
+				return {
+					url: `/api/category/${id}`,
+					method: 'DELETE',
+					headers: {
+						Authorization: `${getToken()}`,
+					},
+				};
+			},
+			invalidatesTags: ['Categories'],
+		}),
+		editCategory: builder.mutation({
+			query: ({ id, name, description }) => {
+				return {
+					url: `/api/category/${id}`,
+					method: 'PUT',
+					body: { name, description },
+					headers: {
+						Authorization: `${getToken()}`,
+					},
+				};
+			},
+			invalidatesTags: ['Categories'],
+		}),
+		getProvider: builder.query({
+			query: () => {
+				return {
+					url: '/api/providers',
+					headers: {
+						Authorization: `${getToken()}`,
+					},
+				};
+			},
+		}),
 	}),
 });
 
@@ -83,4 +180,12 @@ export const {
 	useResetPasswordMutation,
 	useChangePasswordMutation,
 	useVerifyAccountMutation,
+	useGetProductsQuery,
+	useSetProductMutation,
+	useUpdateProductMutation,
+	useGetCategoryQuery,
+	useGetProviderQuery,
+	useAddCategoryMutation,
+	useDeleteCategoryMutation,
+	useEditCategoryMutation,
 } = apiSlice;

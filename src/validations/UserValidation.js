@@ -10,7 +10,24 @@ export const loginSchema = yup.object().shape({
 			'email is not valid'
 		)
 		.required('email is required field'),
-	password: yup.string().min(6).max(20).required('password is required field'),
+	password: yup
+		.string()
+		.min(6, 'Password must be al min 6 characters long')
+		.max(20, 'Password must be at least 20 characters long')
+		.matches(
+			/^(?=.*[A-Z])/,
+			'Password must contain at least one uppercase letter'
+		)
+		.matches(
+			/^(?=.*[a-z])/,
+			'Password must contain at least one lowercase letter'
+		)
+		.matches(/^(?=.*[0-9])/, 'Password must contain at least one number')
+		.matches(
+			/^(?=.*[!@#$%^&*])/,
+			'Password must contain at least one special character'
+		)
+		.required('password is required field'),
 });
 
 //================================ NewPassword Validation  ================================//

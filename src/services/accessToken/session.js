@@ -11,7 +11,7 @@ export const getLogin_in = () => {
 	return Cookies.get(login_in);
 };
 export const removeLogin_in = () => {
-	Cookies.remove(login_in);
+	Cookies.set(login_in, 'false');
 };
 
 export const getToken = () => {
@@ -19,7 +19,7 @@ export const getToken = () => {
 };
 
 export const setToken = (token) => {
-	Cookies.set(TOKEN_KEY, token);
+	Cookies.set(TOKEN_KEY, token, { expires: 1 });
 };
 
 export const removeToken = () => {

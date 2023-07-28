@@ -78,7 +78,7 @@ const LoginForm = () => {
 									className='absolute top-1/2 -translate-y-1/2 right-2 hover:cursor-pointer text-primary'
 								/>
 							)}
-							<p className='absolute w-full top-1/2 text-sm translate-y-[78%] md:translate-y-[1.5rem] left-2  text-error mt-2 mb-2 '>
+							<p className='absolute w-full top-1/2 text-sm translate-y-[1rem] md:translate-y-[1.2rem] left-2 text-center text-error mt-2 mb-2 '>
 								{errors.password?.message}
 							</p>
 						</div>

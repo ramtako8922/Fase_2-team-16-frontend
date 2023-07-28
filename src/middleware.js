@@ -1,4 +1,7 @@
 import { NextResponse } from 'next/server';
+import jwt_decode from 'jwt-decode';
+import dayjs from 'dayjs';
+
 const validateToken = async (request) => {
 	const token = request.cookies.get('ZurmSesionT');
 
@@ -6,32 +9,34 @@ const validateToken = async (request) => {
 		// Si no se proporciona un token, redirige al usuario a /auth/login
 		return NextResponse.redirect(new URL('/auth/login', request.url));
 	}
-
-	try {
-		// Haces una solicitud al endpoint para validar el token
-		const response = await fetch('https://api-inventario.fly.dev/api/me', {
-			headers: {
-				Authorization: token.value,
-			},
-		})
-			.then((res) => res.json())
-			.then((data) => {
-				if (data && data.id !== undefined && data.status === 'true') {
-					// Si el token es válido, permite el acceso a la ruta
-					return NextResponse.next();
-				} else {
-					// Si el token no es válido o ha expirado, redirige al usuario a /auth/login
-					return NextResponse.redirect(new URL('/auth/login', request.url));
-				}
-			});
-	} catch (error) {}
 };
 
 const validateLogin = async (request) => {
 	const islogin = request.cookies.get('Login_in');
-
-	if (islogin) {
-		return NextResponse.redirect(new URL('/dashboard/home', request.url));
+	const token = request.cookies.get('ZurmSesionT');
+	const BaseUrl = ' https://api-inventario.fly.dev';
+	const res = await fetch(`${BaseUrl}/api/me`, {
+		headers: {
+			Authorization: `${token}`,
+		},
+	});
+	const data = await res.json();
+	if (islogin === 'true' && token && data.status === 200) {
+		return NextResponse.redirect(new URL('/dashboard', request.url));
+	} else {
+		return NextResponse.redirect(new URL('/auth/login', request.url));
+	}
+};
+const isLogin = async (request) => {
+	const islogin = request.cookies.get('Login_in');
+	const token = request.cookies.get('ZurmSesionT');
+	if (islogin && token) {
+		const decoded = jwt_decode(token.value);
+		const isExpired = dayjs.unix(decoded.exp).diff(dayjs(), 'minute') < 1;
+		if (!isExpired) {
+			return NextResponse.redirect(new URL('/dashboard/home', request.url));
+		}
+		return NextResponse.redirect(new URL('/auth/login', request.url));
 	}
 };
 
@@ -44,7 +49,7 @@ export async function middleware(request) {
 	}
 	if (pathname.startsWith('/auth/')) {
 		// Validas el token solo para las rutas que requieren autenticación
-		return validateLogin(request);
+		return isLogin(request);
 	}
 
 	// Si no es una ruta protegida, permites el acceso sin validar el token

@@ -1,4 +1,4 @@
-import { RaceBy, Ping, DotSpinner } from '@uiball/loaders';
+import { RaceBy, Ping, DotSpinner, Ring } from '@uiball/loaders';
 
 export const LoaderLogin = () => {
 	return (
@@ -32,5 +32,18 @@ export const LoaderSendEmail = () => {
 			speed={0.9}
 			color='black'
 		/>
+	);
+};
+
+export const LoaderCategory = () => {
+	return (
+		<>
+			<Ring
+				size={40}
+				lineWeight={5}
+				speed={2}
+				color='blue'
+			/>
+		</>
 	);
 };
