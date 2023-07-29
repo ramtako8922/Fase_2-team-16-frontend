@@ -20,7 +20,7 @@ export default function Team() {
       <h1 className=' font-medium text-center mt-10 text-2xl'><span className='text-2xl text-purple-500'></span>Team</h1>
       <h2 className='text-center text-2xl mt-4  font-medium '>Team Lead</h2>
       <div className='flex-col  p-4 md:flex md:w-[700px] md:m-auto'>
-        <motion.div className=' shadow-xl bg-slate-300 flex mt-4 gap-4 w-full'  initial={{opacity:0, scale:0.5}} animate={{opacity:1,scale:1}} transition={{duration:1}}>
+        <motion.div className=' shadow-xlwhite flex mt-4 gap-4 w-full bg-white'  initial={{opacity:0, scale:0.5}} animate={{opacity:1,scale:1}} transition={{duration:1}}>
           <div className='shrink-0' >
             <Image className='h-full' src={picture4}
               width={250} />
@@ -46,7 +46,7 @@ export default function Team() {
     
     <div className='flex-col w-full gap-4 p-4  md:flex xl:flex-row  '>
         
-        <motion.div className=' shadow-xl m-auto bg-slate-300 flex mt-4 md:w-[700px] xl:w-1/3    gap-2'  initial={{opacity:0, scale:0.5}} animate={{opacity:1,scale:1}} transition={{duration:1}}>
+        <motion.div className=' shadow-xl m-auto flex mt-4 md:w-[700px] xl:w-1/3  bg-white  gap-2'  initial={{opacity:0, scale:0.5}} animate={{opacity:1,scale:1}} transition={{duration:1}}>
           <div className='shrink-0 '>
             <Image className='h-full' src={picture5}
               width={250} />
@@ -64,7 +64,7 @@ export default function Team() {
           </div>
         </motion.div>
 
-        <motion.div className='shadow-xl m-auto bg-slate-300 flex mt-4 md:w-[700px] xl:w-1/3    gap-2' initial={{opacity:0, scale:0.5}} animate={{opacity:1,scale:1}} transition={{duration:1}}>
+        <motion.div className='shadow-xl m-auto bg-white flex mt-4 md:w-[700px] xl:w-1/3    gap-2' initial={{opacity:0, scale:0.5}} animate={{opacity:1,scale:1}} transition={{duration:1}}>
           <div className='shrink-0 '>
             <Image className='object-cover h-full ' src={picture6}
               width={250} />
@@ -81,7 +81,7 @@ export default function Team() {
           </div>
         </motion.div>
 
-        <motion.div className='shadow-xl m-auto bg-slate-300 flex mt-4 md:w-[700px] xl:w-1/3    gap-2' initial={{opacity:0, scale:0.5}} animate={{opacity:1,scale:1}} transition={{duration:1}}>
+        <motion.div className='shadow-xl m-auto flex mt-4 md:w-[700px] xl:w-1/3 bg-white   gap-2' initial={{opacity:0, scale:0.5}} animate={{opacity:1,scale:1}} transition={{duration:1}}>
           <div className='shrink-0 '>
             <Image className='object-cover h-full'  src={picture}
              width={250} />
@@ -104,7 +104,7 @@ export default function Team() {
       <div className='flex-col w-full gap-4 p-4  md:flex xl:flex-row'>
 
 
-        <motion.div className=' shadow-xl m-auto bg-slate-300 flex mt-4 md:w-[700px] xl:w-1/2    gap-2' initial={{opacity:0, scale:0.5}} animate={{opacity:1,scale:1}} transition={{duration:1}}>
+        <motion.div className=' shadow-xl m-auto flex mt-4 md:w-[700px] xl:w-1/3 bg-white   gap-2' initial={{opacity:0, scale:0.5}} animate={{opacity:1,scale:1}} transition={{duration:1}}>
           <div className='shrink-0'>
             <Image className=' object-cover h-full'  src={picture3}
               width={250} />
@@ -122,7 +122,7 @@ export default function Team() {
           </div>
         </motion.div>
 
-        <motion.div className=' shadow-xl m-auto bg-slate-300 flex mt-4 md:w-[700px] xl:w-1/2    gap-2'  initial={{opacity:0, scale:0.5}} animate={{opacity:1,scale:1}} transition={{duration:1}}>
+        <motion.div className=' shadow-xl m-auto flex mt-4 md:w-[700px] xl:w-1/3   bg-white gap-2'  initial={{opacity:0, scale:0.5}} animate={{opacity:1,scale:1}} transition={{duration:1}}>
           <div>
             <Image className='shrink-0 h-full' src={picture2}
               width={250} />
