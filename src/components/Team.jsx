@@ -16,7 +16,7 @@ import {
 export default function Team() {
   return (
     <>
-    <div>
+    <div className='h-full'>
       <h1 className=' font-medium text-center mt-10 text-2xl'><span className='text-2xl text-purple-500'></span>Team</h1>
       <h2 className='text-center text-2xl mt-4  font-medium '>Team Lead</h2>
       <div className='flex-col  p-4 md:flex md:w-[700px] md:m-auto'>
