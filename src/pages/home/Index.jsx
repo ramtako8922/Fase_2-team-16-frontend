@@ -20,7 +20,7 @@ function Index() {
 					href='/home.ico'
 				/>
 			</Head>
-            <div>
+            <div className='w-full h-screen'>
                 <Home/>
             </div>
       
