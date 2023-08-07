@@ -12,6 +12,7 @@ import {
 	RiArrowRightSLine,
 	RiMenu3Line,
 	RiCloseLine,
+	RiFileUserLine
 } from 'react-icons/ri';
 import { SiPcgamingwiki } from 'react-icons/si';
 
@@ -63,7 +64,7 @@ const Sidebar = () => {
 							</button>
 							<ul
 								className={` ${
-									showSubmenu ? 'h-[130px]' : 'h-0'
+									showSubmenu ? 'h-[160px]' : 'h-0'
 								} overflow-y-hidden transition-all`}>
 								<li>
 									<Link
@@ -86,6 +87,14 @@ const Sidebar = () => {
 										Add Categories
 									</Link>
 								</li>
+
+								<li>
+									<Link
+										href='/dashboard/product/categories'
+										className='py-2 px-4 border-l border-gray-500 ml-6 block relative before:w-3 before:h-3 before:absolute before:bg-gray-500 before:rounded-full before:-left-[6.5px] before:top-1/2 before:-translate-y-1/2 before:border-4 before:border-secondary-100  hover:bg-primary hover:rounded-2xl hover:shadow-lg hover:text-black transform active:scale-x-75 transition-transform text-sm'>
+										Add providers
+									</Link>
+								</li>
 							</ul>
 						</li>
 						<li>
@@ -94,6 +103,14 @@ const Sidebar = () => {
 								className='flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary hover:shadow-lg hover:text-black transform active:scale-x-75 transition-transform '>
 								<RiCustomerService2Line className='text-white ' />
 								Tickets
+							</Link>
+						</li>
+
+						<li>
+							<Link
+								href='#'
+								className='flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-primary hover:shadow-lg hover:text-black transform active:scale-x-75 transition-transform'>
+								<RiFileUserLine className='text-white' /> Users
 							</Link>
 						</li>
 						<li>

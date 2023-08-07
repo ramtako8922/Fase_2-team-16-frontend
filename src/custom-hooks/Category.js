@@ -10,19 +10,27 @@ import {
 	useGetCategoryQuery,
 	useAddCategoryMutation,
 	useDeleteCategoryMutation,
+	useEditCategoryMutation,
 } from '@/store/slices/apis';
 import { useEffect, useState } from 'react';
 
 export const useAddCategory = () => {
 	const [categories, setCategories] = useState([]);
 	const [open, setOpen] = useState(false);
+	const [openEdit, setOpenEdit] = useState(false); // [1
 	const [selectCategory, setSelectCategory] = useState();
+	const[page,setPage]=useState(1)
+	const pagesNumber=[]
+	const[itemPagitantion,SetItemPagintation]=useState([])
+
+
 	const {
 		data: dataCategories,
 		isLoading: isLoandingCategories,
+		isFetching: isFetchingCategories,
 		isError: isCategoriesError,
 		error: categoriesError,
-	} = useGetCategoryQuery();
+	} = useGetCategoryQuery(page);
 	const [
 		addCategory,
 		{
@@ -45,6 +53,18 @@ export const useAddCategory = () => {
 		},
 	] = useDeleteCategoryMutation();
 
+	const [
+		editCategory,
+		{
+			isSuccess: isSuccessEditCategory,
+			data: dataEditCategory,
+			isError: isEditError,
+			isLoading: isLoandingEditCategory,
+			error: editCategoryError,
+			isUninitialized: isUninitializedEditCategory,
+		},
+	] = useEditCategoryMutation();
+
 	const {
 		register,
 		handleSubmit,
@@ -57,17 +77,46 @@ export const useAddCategory = () => {
 		resolver: yupResolver(addCategorySchema),
 	});
 
+	const {
+		register: registerEdit,
+		handleSubmit: handleSubmitEdit,
+		formState: { errors: errorsEdit },
+	} = useForm({
+		defaultValues: {
+			name: selectCategory?.name,
+			description: selectCategory?.description,
+		},
+		resolver: yupResolver(addCategorySchema),
+	});
+
 	const onSubmit = (data) => {
 		addCategory(data);
 	};
 	const handleDeleteCategory = () => {
 		deleteCategory(selectCategory.id);
 	};
+	const onSubmitEdit = ({ name, description }) => {
+		const data = {
+			id: selectCategory.id,
+			name,
+			description,
+		};
+		editCategory(data);
+	};
+	console.log(errorsEdit);
 
 	useEffect(() => {
 		if (dataCategories) {
 			setCategories(dataCategories.categories);
+			
+			for (let i=1; i<=dataCategories.pages;i++){
+				pagesNumber.push(i);
+				
+			}
+			console.log(pagesNumber)
 		}
+		SetItemPagintation(pagesNumber)
+		
 	}, [dataCategories]);
 
 	useEffect(() => {
@@ -88,6 +137,10 @@ export const useAddCategory = () => {
 			case isDeleteError:
 				errorRequest(deleteCategoryError?.data?.message);
 				break;
+			case isSuccessEditCategory:
+				success(dataEditCategory?.message);
+				setOpenEdit(false);
+				break;
 		}
 	}, [
 		isSuccessCategory,
@@ -100,14 +153,27 @@ export const useAddCategory = () => {
 		errorAddCategory,
 		isDeleteError,
 		deleteCategoryError,
+		isSuccessEditCategory,
+		dataEditCategory,
 	]);
+	const previusPage=()=>{
+		setPage(page-1)
+	}
 
+	const nextPage=()=>{
+		setPage(page+1)
+	}
+
+	const onPage=(p)=>{
+		setPage(p)
+	}
 	return {
 		register,
 		handleSubmit,
 		onSubmit,
 		errors,
 		categories,
+		dataCategories,
 		isLoandingCategory,
 		handleDeleteCategory,
 		isLoandingDeleteCategory,
@@ -117,5 +183,21 @@ export const useAddCategory = () => {
 		setOpen,
 		setSelectCategory,
 		selectCategory,
+		setOpenEdit,
+		openEdit,
+		onSubmitEdit,
+		registerEdit,
+		handleSubmitEdit,
+		errorsEdit,
+		isLoandingEditCategory,
+		isFetchingCategories,
+		page,
+		setPage,
+		itemPagitantion,
+		nextPage,
+		previusPage,
+		onPage
+		
+		
 	};
 };
