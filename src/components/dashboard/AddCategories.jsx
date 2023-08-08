@@ -31,6 +31,9 @@ const AddCategories = () => {
 		onSubmitEdit,
 		errorsEdit,
 		isLoandingEditCategory,
+		CategoryPerPage,
+		lastIndex,
+		firtsIndex
 	} = useAddCategory();
 
 	useEffect(() => {
@@ -192,7 +195,7 @@ const AddCategories = () => {
 								</button>
 							</div>
 						</div>
-					))}
+					)).slice(firtsIndex,lastIndex)}
 				</div>
 				<PaginationCategory ></PaginationCategory>
 				<ToastContainer

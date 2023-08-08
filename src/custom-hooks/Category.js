@@ -13,6 +13,7 @@ import {
 	useEditCategoryMutation,
 } from '@/store/slices/apis';
 import { useEffect, useState } from 'react';
+import { CategoryScale } from 'chart.js';
 
 export const useAddCategory = () => {
 	const [categories, setCategories] = useState([]);
@@ -22,6 +23,9 @@ export const useAddCategory = () => {
 	const[page,setPage]=useState(1)
 	const pagesNumber=[]
 	const[itemPagitantion,SetItemPagintation]=useState([])
+	const[CategoryPerPage, setCategoryPerPage]=useState(3)
+	const lastIndex=page*CategoryPerPage;
+	const firtsIndex=lastIndex-CategoryPerPage
 
 
 	const {
@@ -107,14 +111,21 @@ export const useAddCategory = () => {
 
 	useEffect(() => {
 		if (dataCategories) {
-			setCategories(dataCategories.categories);
 			
-			for (let i=1; i<=dataCategories.pages;i++){
+			setCategories(dataCategories.categories);
+			for (let i=1; i<=dataCategories.limit/CategoryPerPage;i++){
 				pagesNumber.push(i);
+				console.log(pagesNumber)
 				
 			}
-			console.log(pagesNumber)
+			
+			
+			console.log(page)
+			console.log(lastIndex)
+			console.log(firtsIndex)
+			console.log(dataCategories)
 		}
+
 		SetItemPagintation(pagesNumber)
 		
 	}, [dataCategories]);
@@ -167,6 +178,7 @@ export const useAddCategory = () => {
 	const onPage=(p)=>{
 		setPage(p)
 	}
+
 	return {
 		register,
 		handleSubmit,
@@ -196,7 +208,10 @@ export const useAddCategory = () => {
 		itemPagitantion,
 		nextPage,
 		previusPage,
-		onPage
+		onPage,
+		CategoryPerPage,
+		lastIndex,
+		firtsIndex
 		
 		
 	};
